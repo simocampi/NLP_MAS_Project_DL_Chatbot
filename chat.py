@@ -17,14 +17,14 @@ with open("intents.json") as file:
 
 def chat():
     # load trained model
-    model = keras.models.load_model('chat_model')
+    model = keras.models.load_model('network/chat_model')
 
     # load tokenizer object
-    with open('tokenizer.pickle', 'rb') as handle:
+    with open('network/tokenizer.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
 
     # load label encoder object
-    with open('label_encoder.pickle', 'rb') as enc:
+    with open('network/label_encoder.pickle', 'rb') as enc:
         lbl_encoder = pickle.load(enc)
 
     # parameters
