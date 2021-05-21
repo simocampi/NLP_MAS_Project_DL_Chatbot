@@ -1,38 +1,63 @@
 from tkinter import *
+import tkinter.ttk as ttk
 from PIL import Image, ImageTk
 
-base = Tk()
-base.title("Hello")
-base.geometry("400x500")
-base.resizable(width=FALSE, height=FALSE)
 
-#Create Chat window
-ChatLog = Text(base, bd=0, bg="white", height="8", width="50", font="Arial",)
+def main_window():
+    window = Tk()
+    window.title("DeepChatbot")
+    window.geometry("400x500")
+    window.resizable(width=FALSE, height=FALSE)
 
-ChatLog.config(state=DISABLED)
-
-#Bind scrollbar to Chat window
-scrollbar = Scrollbar(base, command=ChatLog.yview, cursor="heart")
-ChatLog['yscrollcommand'] = scrollbar.set
-
-#Create Button to send message
-SendButton = Button(base, font=("Verdana",12,'bold'), text="Send", width="12", height=5,
-                    bd=0, bg="#32de97", activebackground="#3c9d9b",fg='#ffffff',
-                    command= send )
-
-#Create the box to enter message
-EntryBox = Text(base, bd=0, bg="white",width="29", height="5", font="Arial")
-#EntryBox.bind("<Return>", send)
+    return window
 
 
-#Place all components on the screen
-scrollbar.place(x=376,y=6, height=386)
-ChatLog.place(x=6,y=6, height=386, width=370)
-EntryBox.place(x=128, y=401, height=90, width=265)
-SendButton.place(x=6, y=401, height=90)
+def send():
+    # TODO:to implement
+    pass
 
 
+def create_send_button(window):
+    click_btn = PhotoImage(file='send_btn.png')
+    return Button(window, image=click_btn, command=send)
+
+
+def create_entry_box(window):
+    return Text(window, bd=0, bg="white", width="29", height="5", font="Arial")
+
+
+def gui():
+    window = main_window()
+
+    # Create Chat window
+    chat_window = Text(window, bd=0, bg="white", height="8", width="50", font="Arial", )
+    chat_window.config(state=DISABLED)
+
+    # Bind scrollbar to Chat window
+    scrollbar = Scrollbar(window, command=chat_window.yview, cursor="heart")
+    chat_window['yscrollcommand'] = scrollbar.set
+
+    # Create button "SEND"
+    send_button = create_send_button(window)
+
+    # Create the box to enter message
+    entry_box = create_entry_box(window)
+    # entry_box.bind("<Return>", send)
+
+    # Place all components on the screen
+    scrollbar.place(x=376, y=6, height=386)
+    chat_window.place(x=6, y=6, height=386, width=370)
+    #entry_box.place(x=6, y=401, height=90, width=265)
+    send_button.place(x=250, y=401, height=90)
+
+    return window
+
+
+def run():
+
+    window = gui()
+    window.mainloop()
 
 
 if __name__ == "__main__":
-    base.mainloop()
+    run()
