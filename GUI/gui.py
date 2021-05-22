@@ -38,6 +38,8 @@ class ChatBotGUI(Tk):
         pass
 
     def create_send_button(self):
+
+
         return Button(master=self, image=self.click_btn, height=30, width=30, command=self.send, relief="flat")
 
     def create_entry_box(self):
