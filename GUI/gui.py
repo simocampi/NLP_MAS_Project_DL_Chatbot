@@ -27,7 +27,7 @@ class ChatBotGUI(Tk):
         self.chat_window.config(state=DISABLED)
 
         # Bind scrollbar to Chat window
-        self.scrollbar = Scrollbar(self, command=self.chat_window.yview, cursor="heart")
+        self.scrollbar = Scrollbar(self, command=self.chat_window.yview)
         self.chat_window['yscrollcommand'] = self.scrollbar.set
 
         # Create button "SEND"
@@ -38,12 +38,17 @@ class ChatBotGUI(Tk):
         # entry_box.bind("<Return>", send)
 
         # Place all components on the screen
-        self.scrollbar.place(x=376, y=6, height=386)
+        self.scrollbar.place(x=359, y=50, height=350)
         self.chat_window.place(x=9, y=50, height=350, width=345)
         self.entry_box.place(x=9, y=420, height=60, width=345)
         self.send_button.place(x=360, y=440, height=25, width=25)
 
-    def send(self):
+        self.bind("<Return>", self.chat_callback)
+
+    def chat_callback(self, event):
+        self.chat()
+
+    def chat(self):
         message = self.entry_box.get("1.0", 'end-1c').strip()
         self.entry_box.delete("0.0", END)
 
@@ -57,19 +62,19 @@ class ChatBotGUI(Tk):
             self.chat_window.config(foreground="#442265", font=("Calibri", 11))
 
             self.chat_window.config(state=NORMAL)
-            self.chat_window.insert(END, "YOU:  ", "you")
+            self.chat_window.insert(END, "\nYOU:  ", "you")
             self.chat_window.insert(INSERT, message + '\n\n', "you2")
 
             # res = chatbot_response(msg)
             res = "Answering To Be implemented yet!!"
-            self.chat_window.insert(END, "BOT:  ", "bot")
+            self.chat_window.insert(END, "\nBOT:  ", "bot")
             self.chat_window.insert(INSERT, "bot" + res + '\n\n', "bot2")
 
             self.chat_window.config(state=DISABLED)
             self.chat_window.yview(END)
 
     def create_send_button(self):
-        return Button(master=self, image=self.click_btn, height=30, width=30, command=self.send, relief="flat",
+        return Button(master=self, image=self.click_btn, height=30, width=30, command=self.chat, relief="flat",
                       highlightthickness=0, bd=0, bg=BACKGROUND_COLOR, activebackground=BACKGROUND_COLOR)
 
     def create_entry_box(self):
