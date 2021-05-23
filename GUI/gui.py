@@ -20,9 +20,7 @@ class ChatBotGUI(Tk):
 
         self.click_btn = PhotoImage(file='icons/send_btn.png')
         # Create Chat window
-        self.chat_log_window = Text(self, bd=0, highlightthickness=1, highlightcolor="#E5E7E8",
-                                    highlightbackground="#E5E7E8", relief="solid", bg="white", height="8",
-                                    width="50", font="Calibri")
+        self.chat_log_window = self.create_chat_log_window()
 
         self.chat_log_window.config(state=DISABLED)
 
@@ -72,7 +70,9 @@ class ChatBotGUI(Tk):
             self.chat_log_window.yview(END)
 
     def create_chat_log_window(self):
-        return
+        return Text(self, bd=0, highlightthickness=1, highlightcolor="#E5E7E8",
+                                    highlightbackground="#E5E7E8", relief="solid", bg="white", height="8",
+                                    width="50", font="Calibri")
 
     def create_send_button(self):
         return Button(master=self, image=self.click_btn, height=30, width=30, command=self.chat, relief="flat",
