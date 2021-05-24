@@ -64,15 +64,15 @@ class ChatBotGUI(Tk):
             # TODO: change with the real answer of the chatbot
             res = "Answering To Be implemented yet!!"
             self.chat_log_window.insert(END, "\nBOT:  ", "bot")
-            self.chat_log_window.insert(INSERT, "bot" + res + '\n\n', "bot2")
+            self.chat_log_window.insert(INSERT, res + '\n\n', "bot2")
 
             self.chat_log_window.config(state=DISABLED)
             self.chat_log_window.yview(END)
 
     def create_chat_log_window(self):
         return Text(self, bd=0, highlightthickness=1, highlightcolor="#E5E7E8",
-                                    highlightbackground="#E5E7E8", relief="solid", bg="white", height="8",
-                                    width="50", font="Calibri")
+                    highlightbackground="#E5E7E8", relief="solid", bg="white", height="8",
+                    width="50", font="Calibri")
 
     def create_send_button(self):
         return Button(master=self, image=self.click_btn, height=30, width=30, command=self.chat, relief="flat",
