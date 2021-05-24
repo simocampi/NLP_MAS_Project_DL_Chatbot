@@ -58,6 +58,11 @@ def load_and_preprocess_data(json_intents_filename):
     lemmatized_words = lemmatize_words(words_list)
     classes = sorted(classes)
 
-    # TODO: CHANGE
+    # TODO: CHANGE-- MOVE IN get train test the load
     pickle.dump(lemmatized_words, open('words_lemmatized.pkl', 'wb'))
     pickle.dump(classes, open('classes.pkl', 'wb'))
+
+
+def get_train_and_test():
+    x_train = []
+    y_train = []
