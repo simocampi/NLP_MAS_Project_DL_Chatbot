@@ -3,6 +3,7 @@ import numpy as np
 import nltk
 from sklearn.preprocessing import LabelEncoder
 from nltk.stem import WordNetLemmatizer
+import pickle
 
 # TODO: Lemmatizer? Stemming?
 
@@ -54,5 +55,8 @@ def load_data(json_intents_filename):
         if intent['tag'] not in classes:
             classes.append(intent['tag'])
 
-    words_training = lemmatize_words()
+    lemmatized_words = lemmatize_words(words_list)
     classes = sorted(classes)
+
+    pickle.dump(lemmatized_words, open('words_lemmatized.pkl', 'wb'))
+    pickle.dump(classes, open('classes.pkl', 'wb'))
