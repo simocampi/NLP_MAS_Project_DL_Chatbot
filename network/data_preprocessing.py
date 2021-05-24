@@ -33,7 +33,7 @@ like tokenization
 
 
 # TODO: VALUATE TOKENIZATION KERAS
-def load_data(json_intents_filename):
+def load_and_preprocess_data(json_intents_filename):
     data = open(json_intents_filename)
 
     documents = []
@@ -58,5 +58,6 @@ def load_data(json_intents_filename):
     lemmatized_words = lemmatize_words(words_list)
     classes = sorted(classes)
 
+    # TODO: CHANGE
     pickle.dump(lemmatized_words, open('words_lemmatized.pkl', 'wb'))
     pickle.dump(classes, open('classes.pkl', 'wb'))
