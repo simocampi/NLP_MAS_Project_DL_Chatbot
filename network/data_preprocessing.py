@@ -2,11 +2,13 @@ import json
 import numpy as np
 import nltk
 import random
+from keras.preprocessing.text import Tokenizer
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.utils import shuffle
 
 nltk.download('punkt')
 nltk.download('wordnet')
 
-from sklearn.preprocessing import LabelEncoder
 from nltk.stem import WordNetLemmatizer
 
 lemmatizer = WordNetLemmatizer()
@@ -23,7 +25,6 @@ import pickle
 
 
 def lemmatize_words(words_list):
-
     """Filter punctuations marks"""
 
     """Lemmatize words"""
@@ -40,12 +41,14 @@ like tokenization
 
 # TODO: VALUATE TOKENIZATION KERAS
 def load_and_preprocess_data(json_intents_filename):
+    # open data file
     data = open(json_intents_filename).read()
     intents = json.loads(data)
 
-    documents = []
+    pattern_lemmatized = []
     words_list = []
     classes = []
+    labels = []
     responses = []
 
     for intent in intents['intents']:
@@ -54,56 +57,68 @@ def load_and_preprocess_data(json_intents_filename):
             extracted_words = nltk.word_tokenize(pattern)
             # build list of the words
             words_list.extend(extracted_words)
-            # save couple (list)
-            documents.append((extracted_words, intent['tag']))
+            # save couple pattern and corresponfing labels
+            pattern_lemmatized.append(
+                [lemmatizer.lemmatize(word.lower()) for word in extracted_words if word.isalpha()])
+            labels.append(intent['tag'])
 
         responses.append(intent['responses'])
 
         if intent['tag'] not in classes:
             classes.append(intent['tag'])
 
-    words_lemmatized = lemmatize_words(words_list)
+    words_list_lemmatized = lemmatize_words(words_list)
+
     classes = sorted(classes)
+    print(classes.index('greeting'))
 
     # pickle.dump(lemmatized_words, open('words_lemmatized.pickle', 'wb'))
     # pickle.dump(classes, open('classes.pickle', 'wb'))
-    get_train_and_test(words_lemmatized, classes, documents)
+    return words_list_lemmatized, classes, pattern_lemmatized, labels
 
 
-def get_train_and_test(words_lemmatized, classes, documents):
-    # print(classes)
-    # print(words_lemmatized)
-    print(documents)
+def get_train_and_test(json_intents_filename):
 
-    # create our training data
-    training = []
-    # create an empty array for our output
-    output_empty = [0] * len(classes)
+    #get preprocessed data
+
+    words_list_lemmatized, classes, pattern_lemmatized, labels = load_and_preprocess_data(json_intents_filename)
+
+    # create x_train and y_train
+    x_train = []
+    y_train = []
+
+    # space for a row labels
+    encoded_labels = np.zeros(len(classes))
+
     # training set, bag of words for each sentence
-    for doc in documents:
-        # initialize our bag of words
-        bag = []
+    for pattern, label in zip(pattern_lemmatized, labels):
+
+        # create a bags of words
+        BoW = []
         # list of tokenized words for the pattern
-        pattern_words = doc[0]
-        # lemmatize each word - create base word, in attempt to represent related words
-        pattern_words = [lemmatizer.lemmatize(word.lower()) for word in pattern_words]
-        # create our bag of words array with 1, if word match found in current pattern
-        for w in words_lemmatized:
-            bag.append(1) if w in pattern_words else bag.append(0)
+        # Create Bag of words
+        for w in words_list_lemmatized:
+            BoW.append(1) if w in pattern else BoW.append(0)
+        x_train.append(BoW)
         # output is a '0' for each tag and '1' for current tag (for each pattern)
-        output_row = list(output_empty)
-        output_row[classes.index(doc[1])] = 1
-        training.append([bag, output_row])
-    # shuffle our features and turn into np.array
-    random.shuffle(training)
-    training = np.array(training)
+        aux_lab = list(encoded_labels)
+
+        aux_lab[classes.index(label)] = 1
+
+        y_train.append(aux_lab)
+
+    x_train = np.array(x_train)
+    y_train = np.array(y_train)
+    # shuffle data
+    x_train, y_train = shuffle(x_train, y_train)
     # create train and test lists. X - patterns, Y - intents
-    train_x = list(training[:, 0])
-    train_y = list(training[:, 1])
-    print("Training data created")
-    print(training)
-    pass
+    print("X_train, Y_train created correctly")
+
+    print("X_train: ", x_train.shape)
+    print("Y_train: ", y_train.shape)
+
+    return x_train, y_train
 
 
 if __name__ == "__main__":
-    load_and_preprocess_data("intents.json")
+    x_train, y_train = get_train_and_test("intents.json")
