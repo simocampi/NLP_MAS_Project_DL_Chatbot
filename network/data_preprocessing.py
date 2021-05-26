@@ -5,11 +5,14 @@ import numpy as np
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.utils import shuffle
 import pickle
+from utils import tag_map
 
 nltk.download('punkt')
 nltk.download('wordnet')
+nltk.download('averaged_perceptron_tagger')
 
 from nltk.stem import WordNetLemmatizer
+from nltk import pos_tag, word_tokenize
 
 lemmatizer = WordNetLemmatizer()
 
@@ -24,10 +27,11 @@ lemmatizer = WordNetLemmatizer()
 
 
 def lemmatize_words(words_list):
-    """Filter punctuations marks"""
+    """Filter punctuations marks, make in lower case and then lemmatize"""
 
-    """Lemmatize words"""
-    lemmatized_words = [lemmatizer.lemmatize(w.lower()) for w in words_list if w.isalpha()]
+    lemmatized_words = [ lemmatizer.lemmatize(w.lower(), tag_map[p]) if tag_map[p] is not None
+                         else lemmatizer.lemmatize(w.lower()) for w, p in pos_tag(words_list) if w.isalpha()]
+    print(lemmatized_words)
     """remove duplicates"""
     return sorted(list(dict.fromkeys(lemmatized_words)))
 
@@ -38,9 +42,10 @@ like tokenization
 """
 
 
-def pattern_to_BoW():
-    # TODO: to be implemted yet
-    pass
+def pattern_to_BoW(classes, tokenize=False):
+    encoded_labels = np.zeros(len(classes))
+    if not tokenize:
+        pass
 
 
 # TODO: VALUATE TOKENIZATION KERAS
@@ -58,7 +63,7 @@ def load_and_preprocess_data(json_intents_filename):
     for intent in intents['intents']:
         for pattern in intent['patterns']:
             # use tokenization to extract words from a given pattern
-            extracted_words = nltk.word_tokenize(pattern)
+            extracted_words = word_tokenize(pattern)
             # build list of the words
             words_list.extend(extracted_words)
             # save couple pattern and corresponfing labels
@@ -121,4 +126,8 @@ def get_train_and_test(json_intents_filename):
 
 
 if __name__ == "__main__":
-    X_train, Y_train = get_train_and_test("intents.json")
+     X_train, Y_train = get_train_and_test("intents.json")
+
+    # l = [lemmatizer.lemmatize(w.lower()) for w in ["I", "am", "better", "people"]]
+
+    # print(pos_tag("I am better than"))
