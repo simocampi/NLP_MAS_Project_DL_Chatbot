@@ -26,11 +26,15 @@ lemmatizer = WordNetLemmatizer()
 """preprocessing in extracted words: lower case, lemmatization, remove duplicate, remove punctuation mark"""
 
 
-def lemmatize_words(words_list):
+def lemmatize_words(words_sequence):
+    return [lemmatizer.lemmatize(w.lower(), tag_map[p]) if tag_map[p] is not None
+            else lemmatizer.lemmatize(w.lower()) for w, p in pos_tag(words_sequence) if w.isalpha()]
+
+
+def lemmatize_and_preprocess_words(words_list):
     """Filter punctuations marks, make in lower case and then lemmatize"""
 
-    lemmatized_words = [ lemmatizer.lemmatize(w.lower(), tag_map[p]) if tag_map[p] is not None
-                         else lemmatizer.lemmatize(w.lower()) for w, p in pos_tag(words_list) if w.isalpha()]
+    lemmatized_words = lemmatize_words(words_list)
     print(lemmatized_words)
     """remove duplicates"""
     return sorted(list(dict.fromkeys(lemmatized_words)))
@@ -41,11 +45,14 @@ load the dataset, intents.json and make preprocessing on data
 like tokenization 
 """
 
+def pattern_to_BoW(words_list_lemmatized, pattern,tokenize=False):
 
-def pattern_to_BoW(classes, tokenize=False):
-    encoded_labels = np.zeros(len(classes))
+    BoW = []
     if not tokenize:
-        pass
+        pattern = nltk.word_tokenize(pattern)
+        pattern = lemmatize_words(pattern)
+    for w in words_list_lemmatized:
+        BoW.append(1) if w in pattern else BoW.append(0)
 
 
 # TODO: VALUATE TOKENIZATION KERAS
@@ -76,7 +83,7 @@ def load_and_preprocess_data(json_intents_filename):
         if intent['tag'] not in classes:
             classes.append(intent['tag'])
 
-    words_list_lemmatized = lemmatize_words(words_list)
+    words_list_lemmatized = lemmatize_and_preprocess_words(words_list)
 
     # pickle.dump(lemmatized_words, open('words_lemmatized.pickle', 'wb'))
     # pickle.dump(classes, open('classes.pickle', 'wb'))
@@ -126,8 +133,8 @@ def get_train_and_test(json_intents_filename):
 
 
 if __name__ == "__main__":
-     X_train, Y_train = get_train_and_test("intents.json")
+    X_train, Y_train = get_train_and_test("intents.json")
 
-    # l = [lemmatizer.lemmatize(w.lower()) for w in ["I", "am", "better", "people"]]
+# l = [lemmatizer.lemmatize(w.lower()) for w in ["I", "am", "better", "people"]]
 
-    # print(pos_tag("I am better than"))
+# print(pos_tag("I am better than"))
