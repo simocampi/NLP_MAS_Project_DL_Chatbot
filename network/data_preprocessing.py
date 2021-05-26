@@ -1,10 +1,10 @@
 import json
-import numpy as np
 import nltk
-import random
-from keras.preprocessing.text import Tokenizer
+
+import numpy as np
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.utils import shuffle
+import pickle
 
 nltk.download('punkt')
 nltk.download('wordnet')
@@ -12,7 +12,7 @@ nltk.download('wordnet')
 from nltk.stem import WordNetLemmatizer
 
 lemmatizer = WordNetLemmatizer()
-import pickle
+
 
 # TODO: Lemmatizer? Stemming?
 
@@ -69,17 +69,13 @@ def load_and_preprocess_data(json_intents_filename):
 
     words_list_lemmatized = lemmatize_words(words_list)
 
-    classes = sorted(classes)
-    print(classes.index('greeting'))
-
     # pickle.dump(lemmatized_words, open('words_lemmatized.pickle', 'wb'))
     # pickle.dump(classes, open('classes.pickle', 'wb'))
-    return words_list_lemmatized, classes, pattern_lemmatized, labels
+    return words_list_lemmatized, sorted(classes), pattern_lemmatized, labels
 
 
 def get_train_and_test(json_intents_filename):
-
-    #get preprocessed data
+    # get preprocessed data
 
     words_list_lemmatized, classes, pattern_lemmatized, labels = load_and_preprocess_data(json_intents_filename)
 
@@ -121,4 +117,4 @@ def get_train_and_test(json_intents_filename):
 
 
 if __name__ == "__main__":
-    x_train, y_train = get_train_and_test("intents.json")
+    X_train, Y_train = get_train_and_test("intents.json")

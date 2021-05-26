@@ -1,6 +1,10 @@
 from tkinter import *
+from keras.models import load_model
+from network.network import ChatbotDNN
+from network.data_preprocessing import get_train_and_test
 import tkinter.ttk as ttk
 from PIL import Image, ImageTk
+import os
 
 BACKGROUND_COLOR = "white"
 
@@ -41,6 +45,16 @@ class ChatBotGUI(Tk):
         self.chat_log_window.place(x=9, y=50, height=350, width=345)
         self.entry_box.place(x=9, y=420, height=60, width=345)
         self.send_button.place(x=360, y=440, height=25, width=25)
+
+        if os.path.isfile(r"../network/model/model.h5"):
+            self.chatbotModel = load_model(r"../network/model/model.h5")
+            print("model loaded...")
+
+        else:
+            print("Model doesn't exist, it will be created:")
+            x_train, y_test = get_train_and_test(r"../network/intents.json")
+            NN = ChatbotDNN(x_train, y_test)
+            NN.fit()
 
     def chat_callback(self, event):
         self.chat()
