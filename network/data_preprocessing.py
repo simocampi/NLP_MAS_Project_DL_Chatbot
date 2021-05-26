@@ -13,10 +13,9 @@ from nltk.stem import WordNetLemmatizer
 
 lemmatizer = WordNetLemmatizer()
 
-
 # TODO: Lemmatizer? Stemming?
 
-# TODO: LabelEncoder ??
+# TODO: LabelEncoder ?? OneHot Encoder ??
 
 # TODO: Tokenization: extract word --> nltk.tokenize
 
@@ -37,6 +36,11 @@ def lemmatize_words(words_list):
 load the dataset, intents.json and make preprocessing on data
 like tokenization 
 """
+
+
+def pattern_to_BoW():
+    # TODO: to be implemted yet
+    pass
 
 
 # TODO: VALUATE TOKENIZATION KERAS

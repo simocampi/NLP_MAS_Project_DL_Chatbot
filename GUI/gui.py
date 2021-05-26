@@ -46,15 +46,34 @@ class ChatBotGUI(Tk):
         self.entry_box.place(x=9, y=420, height=60, width=345)
         self.send_button.place(x=360, y=440, height=25, width=25)
 
-        if os.path.isfile(r"../network/model/model.h5"):
-            self.chatbotModel = load_model(r"../network/model/model.h5")
+        if os.path.isfile(r"model/model.h5"):
+            self.chatbotModel = load_model(r"model/model.h5")
             print("model loaded...")
 
         else:
             print("Model doesn't exist, it will be created:")
             x_train, y_test = get_train_and_test(r"../network/intents.json")
-            NN = ChatbotDNN(x_train, y_test)
-            NN.fit()
+            dnn_chatbot = ChatbotDNN(x_train, y_test)
+            dnn_chatbot.fit()
+            self.chatbotModel = load_model(r"model/model.h5")
+            print("Model created and loaded correctly...")
+
+    def predict_class(self, pattern):
+        # TODO: to be implemted yet
+        pass
+        """
+        # filter out predictions below a threshold
+        p = bow(sentence, words, show_details=False)
+        res = model.predict(np.array([p]))[0]
+        ERROR_THRESHOLD = 0.25
+        results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
+        # sort by strength of probability
+        results.sort(key=lambda x: x[1], reverse=True)
+        return_list = []
+        for r in results:
+            return_list.append({"intent": classes[r[0]], "probability": str(r[1])})
+        return return_list
+    """
 
     def chat_callback(self, event):
         self.chat()
@@ -75,7 +94,6 @@ class ChatBotGUI(Tk):
             self.chat_log_window.insert(END, "\nYOU:  ", "you")
             self.chat_log_window.insert(INSERT, message + '\n\n', "you2")
 
-            # TODO: change with the real answer of the chatbot
             res = "Answering To Be implemented yet!!"
             self.chat_log_window.insert(END, "\nBOT:  ", "bot")
             self.chat_log_window.insert(INSERT, res + '\n\n', "bot2")
