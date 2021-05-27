@@ -1,11 +1,13 @@
 import json
+import os
+
 import nltk
 
 import numpy as np
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.utils import shuffle
 import pickle
-from utils import tag_map
+from network.utils import tag_map
 
 nltk.download('punkt')
 nltk.download('wordnet')
@@ -45,14 +47,16 @@ load the dataset, intents.json and make preprocessing on data
 like tokenization 
 """
 
-def pattern_to_BoW(words_list_lemmatized, pattern,tokenize=False):
 
+def pattern_to_BoW(words_list_lemmatized, pattern, tokenize=True):
     BoW = []
     if not tokenize:
-        pattern = nltk.word_tokenize(pattern)
+        pattern = word_tokenize(pattern)
         pattern = lemmatize_words(pattern)
     for w in words_list_lemmatized:
         BoW.append(1) if w in pattern else BoW.append(0)
+
+    return BoW
 
 
 # TODO: VALUATE TOKENIZATION KERAS
@@ -85,8 +89,9 @@ def load_and_preprocess_data(json_intents_filename):
 
     words_list_lemmatized = lemmatize_and_preprocess_words(words_list)
 
-    # pickle.dump(lemmatized_words, open('words_lemmatized.pickle', 'wb'))
-    # pickle.dump(classes, open('classes.pickle', 'wb'))
+    if not os.path.isdir("model"):
+        os.mkdir("model")
+    pickle.dump(words_list_lemmatized, open('model/words_list_lemmatized.pickle', 'wb'))
     return words_list_lemmatized, sorted(classes), pattern_lemmatized, labels
 
 
@@ -104,13 +109,9 @@ def get_train_and_test(json_intents_filename):
 
     # training set, bag of words for each sentence
     for pattern, label in zip(pattern_lemmatized, labels):
-
         # create a bags of words
-        BoW = []
-        # list of tokenized words for the pattern
-        # Create Bag of words
-        for w in words_list_lemmatized:
-            BoW.append(1) if w in pattern else BoW.append(0)
+        BoW = pattern_to_BoW(words_list_lemmatized, pattern)
+
         x_train.append(BoW)
         # output is a '0' for each tag and '1' for current tag (for each pattern)
         aux_lab = list(encoded_labels)
@@ -129,11 +130,12 @@ def get_train_and_test(json_intents_filename):
     print("X_train: ", x_train.shape)
     print("Y_train: ", y_train.shape)
 
-    return x_train, y_train
+    return x_train, y_train, words_list_lemmatized
 
 
 if __name__ == "__main__":
-    X_train, Y_train = get_train_and_test("intents.json")
+
+    X_train, Y_train, word_list_lemmatized = get_train_and_test("intents.json")
 
 # l = [lemmatizer.lemmatize(w.lower()) for w in ["I", "am", "better", "people"]]
 

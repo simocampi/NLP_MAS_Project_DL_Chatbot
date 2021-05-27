@@ -1,7 +1,7 @@
 from tkinter import *
 from keras.models import load_model
 from network.network import ChatbotDNN
-from network.data_preprocessing import get_train_and_test
+from network.data_preprocessing import get_train_and_test, pattern_to_BoW
 import tkinter.ttk as ttk
 from PIL import Image, ImageTk
 import os
@@ -52,15 +52,13 @@ class ChatBotGUI(Tk):
 
         else:
             print("Model doesn't exist, it will be created:")
-            x_train, y_test = get_train_and_test(r"../network/intents.json")
+            x_train, y_test, words_list_lemmatized = get_train_and_test(r"../network/intents.json")
             dnn_chatbot = ChatbotDNN(x_train, y_test)
             dnn_chatbot.fit()
             self.chatbotModel = load_model(r"model/model.h5")
             print("Model created and loaded correctly...")
 
-    def predict_class(self, pattern):
-        # TODO: to be implemted yet
-        pass
+
         """
         # filter out predictions below a threshold
         p = bow(sentence, words, show_details=False)

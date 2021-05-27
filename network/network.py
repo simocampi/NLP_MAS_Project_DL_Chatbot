@@ -2,6 +2,7 @@ from keras.models import Sequential
 from keras.layers import Dense, Activation, Dropout
 from keras.optimizers import SGD
 import numpy as np
+import pickle
 import os
 
 
@@ -37,3 +38,9 @@ class ChatbotDNN:
 
             self.model.save('model/model.h5', hist)
             print("\nModel saved correctly.\n")
+
+    def predict(self):
+
+        with open('model/words_list_lemmatized.pickle', 'rb') as file:
+            words_list_lemmatized= pickle.load(file)
+        print("AAAA: ", words_list_lemmatized )
