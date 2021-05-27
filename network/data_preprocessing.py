@@ -7,7 +7,7 @@ import numpy as np
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.utils import shuffle
 import pickle
-from network.utils import tag_map
+from network.utils import pos_tag_map
 
 nltk.download('punkt')
 nltk.download('wordnet')
@@ -18,18 +18,11 @@ from nltk import pos_tag, word_tokenize
 
 lemmatizer = WordNetLemmatizer()
 
-# TODO: Lemmatizer? Stemming?
-
-# TODO: LabelEncoder ?? OneHot Encoder ??
-
-# TODO: Tokenization: extract word --> nltk.tokenize
-
-
 """preprocessing in extracted words: lower case, lemmatization, remove duplicate, remove punctuation mark"""
 
 
 def lemmatize_words(words_sequence):
-    return [lemmatizer.lemmatize(w.lower(), tag_map[p]) if tag_map[p] is not None
+    return [lemmatizer.lemmatize(w.lower(), pos_tag_map[p]) if pos_tag_map[p] is not None
             else lemmatizer.lemmatize(w.lower()) for w, p in pos_tag(words_sequence) if w.isalpha()]
 
 
@@ -48,24 +41,25 @@ like tokenization
 """
 
 
-def pattern_to_BoW(words_list_lemmatized, pattern, tokenize=True):
+def pattern_to_BoW(words_list_lemmatized, pattern, tokenized=True):
     BoW = []
-    if not tokenize:
+    if not tokenized:
         pattern = word_tokenize(pattern)
         pattern = lemmatize_words(pattern)
+        print("pattern: ", pattern)
     for w in words_list_lemmatized:
         BoW.append(1) if w in pattern else BoW.append(0)
 
     return BoW
 
 
-# TODO: VALUATE TOKENIZATION KERAS
+# TODO: VALUATE TOKENIZATION KERAS AND ONEHOT ENCODING
 def load_and_preprocess_data(json_intents_filename):
     # open data file
     data = open(json_intents_filename).read()
     intents = json.loads(data)
 
-    pattern_lemmatized = []
+    patterns_lemmatized = []
     words_list = []
     classes = []
     labels = []
@@ -78,8 +72,7 @@ def load_and_preprocess_data(json_intents_filename):
             # build list of the words
             words_list.extend(extracted_words)
             # save couple pattern and corresponfing labels
-            pattern_lemmatized.append(
-                [lemmatizer.lemmatize(word.lower()) for word in extracted_words if word.isalpha()])
+            patterns_lemmatized.append(lemmatize_words(extracted_words))
             labels.append(intent['tag'])
 
         responses.append(intent['responses'])
@@ -92,7 +85,9 @@ def load_and_preprocess_data(json_intents_filename):
     if not os.path.isdir("model"):
         os.mkdir("model")
     pickle.dump(words_list_lemmatized, open('model/words_list_lemmatized.pickle', 'wb'))
-    return words_list_lemmatized, sorted(classes), pattern_lemmatized, labels
+    pickle.dump(classes, open('model/classes.pickle', 'wb'))
+
+    return words_list_lemmatized, classes, patterns_lemmatized, labels
 
 
 def get_train_and_test(json_intents_filename):
@@ -130,12 +125,11 @@ def get_train_and_test(json_intents_filename):
     print("X_train: ", x_train.shape)
     print("Y_train: ", y_train.shape)
 
-    return x_train, y_train, words_list_lemmatized
+    return x_train, y_train
 
 
 if __name__ == "__main__":
-
-    X_train, Y_train, word_list_lemmatized = get_train_and_test("intents.json")
+    X_train, Y_train = get_train_and_test("intents.json")
 
 # l = [lemmatizer.lemmatize(w.lower()) for w in ["I", "am", "better", "people"]]
 

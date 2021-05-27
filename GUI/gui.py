@@ -1,7 +1,7 @@
 from tkinter import *
-from keras.models import load_model
+
 from network.network import ChatbotDNN
-from network.data_preprocessing import get_train_and_test, pattern_to_BoW
+from network.data_preprocessing import get_train_and_test
 import tkinter.ttk as ttk
 from PIL import Image, ImageTk
 import os
@@ -46,32 +46,15 @@ class ChatBotGUI(Tk):
         self.entry_box.place(x=9, y=420, height=60, width=345)
         self.send_button.place(x=360, y=440, height=25, width=25)
 
-        if os.path.isfile(r"model/model.h5"):
-            self.chatbotModel = load_model(r"model/model.h5")
-            print("model loaded...")
+        if not os.path.isfile(r"model/model.h5"):
+            x_train, y_test = get_train_and_test(r"../network/intents.json")
+            self.dnn_chatbot = ChatbotDNN(x_train, y_test)
+            self.dnn_chatbot.fit()
 
         else:
-            print("Model doesn't exist, it will be created:")
-            x_train, y_test, words_list_lemmatized = get_train_and_test(r"../network/intents.json")
-            dnn_chatbot = ChatbotDNN(x_train, y_test)
-            dnn_chatbot.fit()
-            self.chatbotModel = load_model(r"model/model.h5")
-            print("Model created and loaded correctly...")
+            self.dnn_chatbot = ChatbotDNN()
 
-
-        """
-        # filter out predictions below a threshold
-        p = bow(sentence, words, show_details=False)
-        res = model.predict(np.array([p]))[0]
-        ERROR_THRESHOLD = 0.25
-        results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
-        # sort by strength of probability
-        results.sort(key=lambda x: x[1], reverse=True)
-        return_list = []
-        for r in results:
-            return_list.append({"intent": classes[r[0]], "probability": str(r[1])})
-        return return_list
-    """
+        self.dnn_chatbot.predict("I want to search for blood pressure result history")
 
     def chat_callback(self, event):
         self.chat()
