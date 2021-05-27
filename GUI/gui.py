@@ -15,15 +15,20 @@ class ChatBotGUI(Tk):
     def __init__(self, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
         self.title("DeepChatbot")
-        self.geometry("400x500")
+        self.geometry("400x510")
         self.resizable(width=FALSE, height=FALSE)
         self.configure(bg=BACKGROUND_COLOR)
 
         # add iconphoto
         self.bot_photo = PhotoImage(file="icons/bot.png")
+        self.bot_photo2 = PhotoImage(file="icons/bot2.png")
         self.iconphoto(False, self.bot_photo)
-
+        self.iconphoto(False, self.bot_photo2)
         self.click_btn = PhotoImage(file='icons/send_btn.png')
+
+        # Header
+        self.head_label = Label(self, bg=BACKGROUND_COLOR, image=self.bot_photo2)
+
         # Create Chat window
         self.chat_log_window = self.create_chat_log_window()
 
@@ -42,10 +47,14 @@ class ChatBotGUI(Tk):
         self.bind("<Return>", self.chat_callback)
 
         # Place all components on the main window
-        self.scrollbar.place(x=359, y=50, height=350)
-        self.chat_log_window.place(x=9, y=50, height=350, width=345)
-        self.entry_box.place(x=9, y=420, height=60, width=345)
-        self.send_button.place(x=360, y=440, height=25, width=25)
+
+        self.head_label.place(x=300, y=0)
+
+        self.scrollbar.place(x=359, y=60, height=360)
+        self.chat_log_window.place(x=9, y=60, height=360, width=345)
+        self.entry_box.place(x=9, y=430, height=63, width=345)
+        self.entry_box.focus()
+        self.send_button.place(x=360, y=450, height=25, width=25)
 
         data = open(r"../network/intents.json").read()
         self.intents = json.loads(data)
