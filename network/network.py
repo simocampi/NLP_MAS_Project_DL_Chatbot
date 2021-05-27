@@ -2,6 +2,7 @@ from keras.models import Sequential, load_model
 from keras.layers import Dense, Activation, Dropout
 from keras.optimizers import SGD
 from network.data_preprocessing import pattern_to_BoW
+from network.utils import Bcolors
 import numpy as np
 import pickle
 import os
@@ -15,9 +16,9 @@ class ChatbotDNN:
         if os.path.isfile("model/model.h5") and x_train is None and y_train is None:
             self.model = load_model("model/model.h5")
             self.loaded = True
-            print("\nModel loaded Correctly.")
+            print(Bcolors.OKBLUE + "\nModel loaded Correctly." + Bcolors.ENDC)
         else:
-            print("Model doesn't exist, it will be created ...")
+            print(Bcolors.OKCYAN + "Model doesn't exist, it will be created ..." + Bcolors.ENDC)
             self.x_train = x_train
             self.y_train = y_train
             self.model = Sequential()
@@ -38,15 +39,15 @@ class ChatbotDNN:
     def fit(self):
 
         if not self.loaded:
-            print("\nModel not exist, starting training...\n")
+            print(Bcolors.OKBLUE + "\nModel not exist, starting training...\n"+ Bcolors.ENDC)
             # Train the model
             hist = self.model.fit(self.x_train, self.y_train, epochs=200, batch_size=5, verbose=1)
-            print("\nSaving model ...\n")
+            print(Bcolors.OKBLUE + "\nSaving model ...\n"+ Bcolors.ENDC)
 
             if not os.path.isdir("model"):
                 os.mkdir("model")
             self.model.save('model/model.h5', hist)
-            print("\nModel saved correctly.\n")
+            print(Bcolors.OKBLUE + "\nModel saved correctly.\n" + Bcolors.ENDC)
 
     def predict(self, new_pattern):
 
@@ -60,10 +61,14 @@ class ChatbotDNN:
         BoW = pattern_to_BoW(words_list_lemmatized, new_pattern, tokenized=False)
         print("BOW: ", BoW)
         prediction = self.model.predict(np.array([BoW]))[0]
-        print("\n\n------Prediction: -------", np.argmax(prediction), "class")
+        print("\n\n------Class Index Prediction: -------", np.argmax(prediction))
 
         print("CLASSES: ", [(i, float(j)) for i, j in zip(classes, prediction)])
 
         print("(\n(Predicted Class , Probability): ", classes[np.argmax(prediction)], max(prediction))
 
-
+        probability = max(prediction)
+        if probability >= 0.75:
+            return classes[np.argmax(prediction)]
+        else:
+            return "noanswer"

@@ -1,4 +1,3 @@
-import json
 import os
 
 import nltk
@@ -15,6 +14,7 @@ nltk.download('averaged_perceptron_tagger')
 
 from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag, word_tokenize
+
 
 lemmatizer = WordNetLemmatizer()
 
@@ -46,7 +46,7 @@ def pattern_to_BoW(words_list_lemmatized, pattern, tokenized=True):
     if not tokenized:
         pattern = word_tokenize(pattern)
         pattern = lemmatize_words(pattern)
-        print("pattern: ", pattern)
+
     for w in words_list_lemmatized:
         BoW.append(1) if w in pattern else BoW.append(0)
 
@@ -54,11 +54,7 @@ def pattern_to_BoW(words_list_lemmatized, pattern, tokenized=True):
 
 
 # TODO: VALUATE TOKENIZATION KERAS AND ONEHOT ENCODING
-def load_and_preprocess_data(json_intents_filename):
-    # open data file
-    data = open(json_intents_filename).read()
-    intents = json.loads(data)
-
+def load_and_preprocess_data(intents):
     patterns_lemmatized = []
     words_list = []
     classes = []

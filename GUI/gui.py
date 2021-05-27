@@ -1,9 +1,10 @@
 from tkinter import *
-
+import json
 from network.network import ChatbotDNN
 from network.data_preprocessing import get_train_and_test
 import tkinter.ttk as ttk
 from PIL import Image, ImageTk
+import random
 import os
 
 BACKGROUND_COLOR = "white"
@@ -46,15 +47,24 @@ class ChatBotGUI(Tk):
         self.entry_box.place(x=9, y=420, height=60, width=345)
         self.send_button.place(x=360, y=440, height=25, width=25)
 
+        data = open(r"../network/intents.json").read()
+        self.intents = json.loads(data)
+
         if not os.path.isfile(r"model/model.h5"):
-            x_train, y_test = get_train_and_test(r"../network/intents.json")
+            x_train, y_test = get_train_and_test(self.intents)
             self.dnn_chatbot = ChatbotDNN(x_train, y_test)
             self.dnn_chatbot.fit()
 
         else:
             self.dnn_chatbot = ChatbotDNN()
 
-        self.dnn_chatbot.predict("I want to search for blood pressure result history")
+    def bot_answer(self, user_question):
+
+        predicted_class = self.dnn_chatbot.predict(user_question)
+        for row in self.intents["intents"]:
+            if row["tag"] == predicted_class:
+                return random.choice(row["responses"])
+        return "Something went wrong!"
 
     def chat_callback(self, event):
         self.chat()
@@ -75,7 +85,7 @@ class ChatBotGUI(Tk):
             self.chat_log_window.insert(END, "\nYOU:  ", "you")
             self.chat_log_window.insert(INSERT, message + '\n\n', "you2")
 
-            res = "Answering To Be implemented yet!!"
+            res = self.bot_answer(message)
             self.chat_log_window.insert(END, "\nBOT:  ", "bot")
             self.chat_log_window.insert(INSERT, res + '\n\n', "bot2")
 
