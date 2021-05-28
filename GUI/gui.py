@@ -79,8 +79,8 @@ class ChatBotGUI(Tk):
         self.chat()
 
     def chat(self):
-        message = self.entry_box.get("1.0", 'end-1c').strip()
-        self.entry_box.delete("0.0", END)
+        message = self.entry_box.get()
+        self.entry_box.delete("0", END)
 
         if message != '':
             self.chat_log_window.tag_config('you', foreground="red", background="#ECF6FF")
@@ -111,7 +111,7 @@ class ChatBotGUI(Tk):
                       highlightthickness=0, bd=0, bg=BACKGROUND_COLOR, activebackground=BACKGROUND_COLOR)
 
     def create_entry_box(self):
-        return Text(self, bd=0, bg="#ECF6FF", width="29", height="5", font="Arial")
+        return Entry(self, bd=0, bg="#ECF6FF", width="29", font="Calibri")
 
     def run(self):
         self.mainloop()
