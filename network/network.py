@@ -1,6 +1,7 @@
 from keras.models import Sequential, load_model
-from keras.layers import Dense, Activation, Dropout
+from keras.layers import Dense, Activation, Dropout, Embedding, GlobalAveragePooling1D
 from keras.optimizers import SGD
+from keras.callbacks import EarlyStopping
 from network.data_preprocessing import pattern_to_BoW
 from network.utils import Bcolors
 import numpy as np
@@ -21,13 +22,16 @@ class ChatbotDNN:
             print(Bcolors.OKCYAN + "Model doesn't exist, it will be created ..." + Bcolors.ENDC)
             self.x_train = x_train
             self.y_train = y_train
+
+            with open('model/classes.pickle', 'rb') as file:
+                classes = pickle.load(file)
+
             self.model = Sequential()
             self.model.add(Dense(128, input_shape=(x_train.shape[1],), activation='relu'))
             self.model.add(Dropout(0.5))
             self.model.add(Dense(64, activation='relu'))
             self.model.add(Dropout(0.5))
-            self.model.add(Dense(y_train.shape[1], activation="softmax"))
-
+            self.model.add(Dense(len(classes), activation="softmax"))
             # set the optimizer
             sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
             # compile the model
@@ -35,14 +39,21 @@ class ChatbotDNN:
             self.model.summary()
             self.loaded = False
 
-    # Train the model if it doesn't exists, othewise is loaded
+    # Train the model if it doesn't exists, otherwise is loaded
     def fit(self):
 
         if not self.loaded:
-            print(Bcolors.OKBLUE + "\nModel not exist, starting training...\n"+ Bcolors.ENDC)
+            print(Bcolors.OKBLUE + "\nModel not exist, starting training...\n" + Bcolors.ENDC)
+
+            '''
+            early_stop = EarlyStopping(monitor='val_loss',
+                                       min_delta=0,
+                                       patience=0,
+                                       verbose=0, mode='auto')
+            '''
             # Train the model
-            hist = self.model.fit(self.x_train, self.y_train, epochs=200, batch_size=5, verbose=1)
-            print(Bcolors.OKBLUE + "\nSaving model ...\n"+ Bcolors.ENDC)
+            hist = self.model.fit(self.x_train, self.y_train, epochs=500, batch_size=8, verbose=1)
+            print(Bcolors.OKBLUE + "\nSaving model ...\n" + Bcolors.ENDC)
 
             if not os.path.isdir("model"):
                 os.mkdir("model")

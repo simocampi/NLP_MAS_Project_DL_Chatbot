@@ -15,15 +15,15 @@ nltk.download('averaged_perceptron_tagger')
 from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag, word_tokenize
 
-
 lemmatizer = WordNetLemmatizer()
 
 """preprocessing in extracted words: lower case, lemmatization, remove duplicate, remove punctuation mark"""
 
 
 def lemmatize_words(words_sequence):
-    return [lemmatizer.lemmatize(w.lower(), pos_tag_map[p]) if pos_tag_map[p] is not None
-            else lemmatizer.lemmatize(w.lower()) for w, p in pos_tag(words_sequence) if w.isalpha()]
+    ignore_words = ['!', '?']
+    return [lemmatizer.lemmatize(w.lower(), pos_tag_map[p]) if pos_tag_map[p] is not None and w.isalpha()
+            else lemmatizer.lemmatize(w.lower()) for w, p in pos_tag(words_sequence) if w not in ignore_words]
 
 
 def lemmatize_and_preprocess_words(words_list):
@@ -32,7 +32,7 @@ def lemmatize_and_preprocess_words(words_list):
     lemmatized_words = lemmatize_words(words_list)
     print(lemmatized_words)
     """remove duplicates"""
-    return sorted(list(dict.fromkeys(lemmatized_words)))
+    return sorted(list(set(lemmatized_words)))
 
 
 """
@@ -46,6 +46,8 @@ def pattern_to_BoW(words_list_lemmatized, pattern, tokenized=True):
     if not tokenized:
         pattern = word_tokenize(pattern)
         pattern = lemmatize_words(pattern)
+
+        print("\n\nPATTERN: ", pattern, "\n\n")
 
     for w in words_list_lemmatized:
         BoW.append(1) if w in pattern else BoW.append(0)
@@ -75,11 +77,12 @@ def load_and_preprocess_data(intents):
 
         if intent['tag'] not in classes:
             classes.append(intent['tag'])
-
+    classes = sorted(list(classes))
     words_list_lemmatized = lemmatize_and_preprocess_words(words_list)
 
     if not os.path.isdir("model"):
         os.mkdir("model")
+
     pickle.dump(words_list_lemmatized, open('model/words_list_lemmatized.pickle', 'wb'))
     pickle.dump(classes, open('model/classes.pickle', 'wb'))
 

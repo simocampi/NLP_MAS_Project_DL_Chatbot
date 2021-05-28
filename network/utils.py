@@ -50,5 +50,16 @@ pos_tag_map = {
     'WP': None,  # wh-pronoun (what, who)
     'WP$': None,  # possessive (wh- whose)
     'WRB': None,  # wh-adverb (how, where)
+    ',': None,
+    '?': None,
+    '.': None,
+    '...': None,
+    '"': None,
+    '[':None,
+    '{':None,
+    ']':None,
+    '}': None,
+    '(': None,
+    ')': None
 
 }
