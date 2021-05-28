@@ -20,14 +20,13 @@ class ChatBotGUI(Tk):
         self.configure(bg=BACKGROUND_COLOR)
 
         # add iconphoto
+
         self.bot_photo = PhotoImage(file="icons/bot.png")
-        self.bot_photo2 = PhotoImage(file="icons/bot2.png")
         self.iconphoto(False, self.bot_photo)
-        self.iconphoto(False, self.bot_photo2)
         self.click_btn = PhotoImage(file='icons/send_btn.png')
 
         # Header
-        self.head_label = Label(self, bg=BACKGROUND_COLOR, image=self.bot_photo2)
+        self.head_label = Label(self, bg=BACKGROUND_COLOR, image=self.bot_photo)
 
         # Create Chat window
         self.chat_log_window = self.create_chat_log_window()
@@ -49,7 +48,6 @@ class ChatBotGUI(Tk):
         # Place all components on the main window
 
         self.head_label.place(x=300, y=0)
-
         self.scrollbar.place(x=359, y=60, height=360)
         self.chat_log_window.place(x=9, y=60, height=360, width=345)
         self.entry_box.place(x=9, y=430, height=63, width=345)
