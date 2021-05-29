@@ -1,6 +1,6 @@
 {"intents": [
         {"tag": "greeting",
-         "patterns": ["Hi there",  "Is anyone there?","Hey","Hola", "Hello", "Good day"],
+         "patterns": ["Hi there",  "Is anyone there?","Hi!","Hey","Hola", "Hello", "Good day"],
          "responses": ["Hello!!", "Good to see you again", "Hi there, how can I help?"],
          "context": [""]
         },
@@ -11,17 +11,41 @@
         },
         {"tag": "thanks",
          "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
-         "responses": ["Happy to help!", "Any time!", "My pleasure"],
+         "responses": ["Happy to help!", "Any time!", "My pleasure", "You are welcome", "No problems :-)"],
          "context": [""]
         },
-        {"tag": "noanswer",
+        {
+          "tag": "headache",
+          "patterns": [""],
+          "responses": [""],
+          "context": [""]
+        },
+        {
+          "tag": "",
+          "patterns": [""],
+          "responses": [""],
+          "context": [""]
+        },
+        {
+          "tag": "",
+          "patterns": [""],
+          "responses": [""],
+          "context": [""]
+        },
+        {
+          "tag": "",
+          "patterns": [""],
+          "responses": [""],
+          "context": [""]
+        },
+        {"tag": "",
          "patterns": [],
-         "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand"],
+         "responses": [""],
          "context": [""]
         },
         {"tag": "options",
-         "patterns": ["How you could help me?", "What help you provide?", "How you can be helpful?"],
-         "responses": ["I can guide you through Adverse management problems, order tracking, person to be contacted and Department related queries","I can provide support related to following problems technical query,management related query,order related query,tracking related query,procurement query,outsourcing problem,manufacturing delay,"],
+         "patterns": ["How you could help me?", "What can you do?", "What help you provide?", "How you can be helpful?"],
+         "responses": ["If you have some health problem I can give yuo some advise to help you get better."],
          "context": [""]
         },
         {"tag": "order_tracking",

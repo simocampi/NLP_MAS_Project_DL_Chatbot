@@ -108,7 +108,7 @@ class ChatBotGUI(Tk):
             res = self.bot_answer(message)
 
             self.chat_log_window.insert(END, "\nBOT:  ", "bot")
-            self.chat_log_window.insert(INSERT, message + '\n\n', "bot2")
+            self.chat_log_window.insert(INSERT, res + '\n\n', "bot2")
 
             self.chat_log_window.config(state=DISABLED)
             self.chat_log_window.yview(END)
