@@ -74,6 +74,7 @@ class ChatBotGUI(Tk):
         else:
             self.dnn_chatbot = ChatbotDNN()
 
+
         self.chat_log_window.config(state=NORMAL)
         self.chat_log_window.insert(END, "\nBOT:  ", "bot")
         self.chat_log_window.insert(INSERT,
