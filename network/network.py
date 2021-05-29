@@ -28,9 +28,10 @@ class ChatbotDNN:
 
             self.model = Sequential()
             self.model.add(Dense(128, input_shape=(x_train.shape[1],), activation='relu'))
-            self.model.add(Dropout(0.5))
             self.model.add(Dense(64, activation='relu'))
-            self.model.add(Dropout(0.5))
+            self.model.add(Dense(32, activation='relu'))
+            self.model.add(Dense(16, activation='relu'))
+
             self.model.add(Dense(len(classes), activation="softmax"))
             # set the optimizer
             sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
@@ -45,14 +46,11 @@ class ChatbotDNN:
         if not self.loaded:
             print(Bcolors.OKBLUE + "\nModel not exist, starting training...\n" + Bcolors.ENDC)
 
-            '''
-            early_stop = EarlyStopping(monitor='val_loss',
-                                       min_delta=0,
-                                       patience=0,
-                                       verbose=0, mode='auto')
-            '''
+            early_stop = EarlyStopping(monitor='loss',
+                                       verbose=1, mode='min')
+
             # Train the model
-            hist = self.model.fit(self.x_train, self.y_train, epochs=500, batch_size=8, verbose=1)
+            hist = self.model.fit(self.x_train, self.y_train, epochs=200, batch_size=16, verbose=1)
             print(Bcolors.OKBLUE + "\nSaving model ...\n" + Bcolors.ENDC)
 
             if not os.path.isdir("model"):

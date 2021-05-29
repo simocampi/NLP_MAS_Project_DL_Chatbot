@@ -14,16 +14,19 @@ class ChatBotGUI(Tk):
 
     def __init__(self, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
-        self.title("DeepChatbot")
-        self.geometry("400x510")
+        self.title("Medical-bot Assistant")
+        self.geometry("450x580")
         self.resizable(width=FALSE, height=FALSE)
         self.configure(bg=BACKGROUND_COLOR)
 
         # add iconphoto
 
         self.bot_photo = PhotoImage(file="icons/bot.png")
+        self.logo = PhotoImage(file="icons/logo.png")
         self.iconphoto(False, self.bot_photo)
         self.click_btn = PhotoImage(file='icons/send_btn.png')
+
+        self.logo_label = Label(self, bg=BACKGROUND_COLOR, image=self.logo)
 
         # Header
         self.head_label = Label(self, bg=BACKGROUND_COLOR, image=self.bot_photo)
@@ -47,12 +50,18 @@ class ChatBotGUI(Tk):
 
         # Place all components on the main window
 
+        self.logo_label.place(x=35, y=20)
         self.head_label.place(x=300, y=0)
-        self.scrollbar.place(x=359, y=60, height=360)
-        self.chat_log_window.place(x=9, y=60, height=360, width=345)
-        self.entry_box.place(x=9, y=430, height=63, width=345)
+        self.scrollbar.place(x=419, y=60, height=420)
+        self.chat_log_window.place(x=9, y=60, height=420, width=405)
+        self.entry_box.place(x=9, y=490, height=63, width=405)
         self.entry_box.focus()
-        self.send_button.place(x=360, y=450, height=25, width=25)
+        self.send_button.place(x=420, y=510, height=25, width=25)
+
+        self.chat_log_window.tag_config('you', foreground="red", background="#ECF6FF")
+        self.chat_log_window.tag_config('you2', foreground="black", background="#ECF6FF")
+        self.chat_log_window.tag_config('bot', foreground="Blue", background="#D7ECFF")
+        self.chat_log_window.tag_config('bot2', foreground="Black", background="#D7ECFF")
 
         data = open(r"../network/intents.json").read()
         self.intents = json.loads(data)
@@ -64,6 +73,13 @@ class ChatBotGUI(Tk):
 
         else:
             self.dnn_chatbot = ChatbotDNN()
+
+        self.chat_log_window.config(state=NORMAL)
+        self.chat_log_window.insert(END, "\nBOT:  ", "bot")
+        self.chat_log_window.insert(INSERT,
+                                    "Welcome! I'm your personal virtual medical assistant. How can I help you?" + '\n\n',
+                                    "bot2")
+        self.chat_log_window.config(state=DISABLED)
 
     def bot_answer(self, user_question):
 
@@ -77,15 +93,11 @@ class ChatBotGUI(Tk):
         self.chat()
 
     def chat(self):
+
         message = self.entry_box.get()
         self.entry_box.delete("0", END)
 
         if message != '':
-            self.chat_log_window.tag_config('you', foreground="red", background="#ECF6FF")
-            self.chat_log_window.tag_config('you2', foreground="black", background="#ECF6FF")
-            self.chat_log_window.tag_config('bot', foreground="Blue", background="#D7ECFF")
-            self.chat_log_window.tag_config('bot2', foreground="Black", background="#D7ECFF")
-
             self.chat_log_window.config(foreground="#442265", font=("Calibri", 11))
 
             self.chat_log_window.config(state=NORMAL)
@@ -93,8 +105,9 @@ class ChatBotGUI(Tk):
             self.chat_log_window.insert(INSERT, message + '\n\n', "you2")
 
             res = self.bot_answer(message)
+
             self.chat_log_window.insert(END, "\nBOT:  ", "bot")
-            self.chat_log_window.insert(INSERT, res + '\n\n', "bot2")
+            self.chat_log_window.insert(INSERT, message + '\n\n', "bot2")
 
             self.chat_log_window.config(state=DISABLED)
             self.chat_log_window.yview(END)
