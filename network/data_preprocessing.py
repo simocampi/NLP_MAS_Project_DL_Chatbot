@@ -127,9 +127,5 @@ def get_train_and_test(json_intents_filename):
     return x_train, y_train
 
 
-if __name__ == "__main__":
-    X_train, Y_train = get_train_and_test("intents.json")
 
-# l = [lemmatizer.lemmatize(w.lower()) for w in ["I", "am", "better", "people"]]
 
-# print(pos_tag("I am better than"))
