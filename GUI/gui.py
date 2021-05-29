@@ -99,7 +99,7 @@ class ChatBotGUI(Tk):
         self.entry_box.delete("0", END)
 
         if message != '':
-            self.chat_log_window.config(foreground="#442265", font=("Calibri", 11))
+            self.chat_log_window.config(foreground="#442265", font=("Calibri", 10))
 
             self.chat_log_window.config(state=NORMAL)
             self.chat_log_window.insert(END, "\nYOU:  ", "you")
