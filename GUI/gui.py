@@ -19,17 +19,19 @@ class ChatBotGUI(Tk):
         self.resizable(width=FALSE, height=FALSE)
         self.configure(bg=BACKGROUND_COLOR)
 
+
         # add iconphoto
 
-        self.bot_photo = PhotoImage(file="icons/bot.png")
+        self.bot_photo = PhotoImage(file="icons/bot2.png")
         self.logo = PhotoImage(file="icons/logo.png")
         self.iconphoto(False, self.bot_photo)
         self.click_btn = PhotoImage(file='icons/send_btn.png')
 
-        self.logo_label = Label(self, bg=BACKGROUND_COLOR, image=self.logo)
+        self.bg_logo = Label(self, bg="#007CB9", fg="white", text="Medical-Bot Assistant",)
+
 
         # Header
-        self.head_label = Label(self, bg=BACKGROUND_COLOR, image=self.bot_photo)
+        self.head_label = Label(self, bg="#007CB9", image=self.bot_photo)
 
         # Create Chat window
         self.chat_log_window = self.create_chat_log_window()
@@ -48,12 +50,14 @@ class ChatBotGUI(Tk):
         # enter key to send message
         self.bind("<Return>", self.chat_callback)
 
+        ttk.Separator(self, orient=HORIZONTAL).place(x=0, y=481, relwidth=0.5)
+
         # Place all components on the main window
 
-        self.logo_label.place(x=35, y=20)
+        self.bg_logo.place(x=0, y=0, height=62, width=580)
         self.head_label.place(x=300, y=0)
-        self.scrollbar.place(x=419, y=60, height=420)
-        self.chat_log_window.place(x=9, y=60, height=420, width=405)
+        self.scrollbar.place(x=429, y=63, height=420)
+        self.chat_log_window.place(x=2, y=63, height=420, width=428)
         self.entry_box.place(x=9, y=500, height=63, width=405)
         self.entry_box.focus()
         self.send_button.place(x=420, y=520, height=25, width=25)
@@ -73,7 +77,6 @@ class ChatBotGUI(Tk):
 
         else:
             self.dnn_chatbot = ChatbotDNN()
-
 
         self.chat_log_window.config(state=NORMAL)
         self.chat_log_window.insert(END, "\nBOT:  ", "bot")
@@ -114,8 +117,7 @@ class ChatBotGUI(Tk):
             self.chat_log_window.yview(END)
 
     def create_chat_log_window(self):
-        return Text(self, bd=0, highlightthickness=1, highlightcolor="#E5E7E8",
-                    highlightbackground="#E5E7E8", relief="solid", bg="white", height="8",
+        return Text(self, bd=0, bg="white", height="8",
                     width="50", font="Calibri")
 
     def create_send_button(self):
