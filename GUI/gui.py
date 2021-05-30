@@ -54,9 +54,9 @@ class ChatBotGUI(Tk):
         self.head_label.place(x=300, y=0)
         self.scrollbar.place(x=419, y=60, height=420)
         self.chat_log_window.place(x=9, y=60, height=420, width=405)
-        self.entry_box.place(x=9, y=490, height=63, width=405)
+        self.entry_box.place(x=9, y=500, height=63, width=405)
         self.entry_box.focus()
-        self.send_button.place(x=420, y=510, height=25, width=25)
+        self.send_button.place(x=420, y=520, height=25, width=25)
 
         self.chat_log_window.tag_config('you', foreground="red", background="#ECF6FF")
         self.chat_log_window.tag_config('you2', foreground="black", background="#ECF6FF")

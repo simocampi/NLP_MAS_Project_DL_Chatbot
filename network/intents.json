@@ -46,8 +46,8 @@
         },
         {
           "tag": "blood_pressure_reference",
-          "patterns": ["What are the normal level of blood pressure?", "How can I know if my blood pressure is ok?", "I want a guidline for the blood pressure", "What are the normal values for the blood pressure?"],
-          "responses": ["If the blood pressure is consistently 130/80 mm Hg or higher, the blood pressure is high, there is the presence of hypertension. In this case contact a doctor for furher information. Otherwise the pressure of the blood is normal."],
+          "patterns": ["What are the normal level of blood pressure?", "How can I know if my blood pressure is ok?", "normal values for pressure", "guidelines for pressure", "I want a guideline for the blood pressure", "What are the normal values for the blood pressure?"],
+          "responses": ["If the blood pressure is consistently 130/80 mm Hg or higher, the blood pressure is high, there is the presence of hypertension. In this case contact a doctor for further information. Otherwise the pressure of the blood is normal."],
           "context": [""]
         },
 
