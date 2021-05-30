@@ -41,7 +41,7 @@
           "tag": "blood_pressure",
           "patterns": ["I have the pressure of the blood high, what does it means?", "I have measured the pressure and it is high", "My pressure is high", "I have a high blood pressure"],
           "responses": ["You may be hypertensive, I suggest you to contact your doctor."],
-          "context": [""],
+          "context": [""]
 
         },
         {
