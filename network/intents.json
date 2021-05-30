@@ -21,19 +21,19 @@
         },
         {
           "tag": "headache",
-          "patterns": ["I have a headache","I have a raised temperature", "I sneeze all the time","I have a very bad headache, what could I take?", "I have a headache, what can I do?", "I had a headache", "I had a severe headache"],
+          "patterns": ["I have a headache","I have a very bad headache, what could I take?", "I have a headache, what can I do?", "I had a headache", "I had a severe headache"],
           "responses": ["You should drink water, take some magnesium and try to sleep. If doesn't go away you can take a medicine like aspirin, paracetamol or ibuprofen. "],
           "context": [""]
         },
         {
           "tag": "common_cold",
-          "patterns": ["I have a cold, what could I take", "I have a cold, what could I do?", "What should i do if i have a cold?", "I have cold, what are the remedies?", "I have cold, what is the treatment"],
+          "patterns": ["I have a cold, what could I take", "I have a cold, what could I do?", "What should i do if i have a cold?", "I have cold, what are the remedies?", "I have cold, what is the treatment", "cold treatment","cold remedies"],
           "responses": ["You should rest and sleep, keep warm, drink plenty of water and if you have a fever, take some paracetamol."],
           "context": [""]
         },
          {
           "tag":"common_cold_symptoms",
-          "patterns": ["I have a blocked nose", "I’m feeling a bit run down", "I’m feeling under the weather", "I have a sore throat", "I have a sore throat, what could I have?"],
+          "patterns": ["I have a blocked nose", "I have a blocked nose, what could I have?", "I have a raised temperature", "I sneeze all the time", "I am feeling a bit run down", "I am feeling under the weather", "I have a sore throat", "I have a sore throat, what could I have?"],
           "responses": ["With these symptoms you may have a common cold."],
           "context": [""]
         },
@@ -52,14 +52,14 @@
 
          {
           "tag": "flue_symptoms",
-          "patterns": ["I have a little fever.", "I have a high fever, what could I have", "I've got temperature", "i've got high temperature"],
+          "patterns": ["I have a little fever.", "I have got a fever.", "I'm running a fever", "I'm running a temperature", "I have a high fever, what could I have", "I've got temperature", "i've got high temperature"],
           "responses": ["You could have a flu."],
           "context": [""]
         },
         {
           "tag": "flu",
           "patterns": ["I have the flu, what could I take", "I have the flu, what could I do?", "What should i do if I have the flu?", "I have the flu, what are the remedies?", "I have the flu, what is the treatment", "I have flu"],
-          "responses": ["You should rest and sleep, keep warm, drink plenty of water and if the fever and if the fever increases a lot you could take paracetamol or ibuprofen."],
+          "responses": ["You should rest and sleep, keep warm, drink plenty of water and if the fever increases a lot you could take paracetamol or ibuprofen."],
           "context": [""]
         },
 
