@@ -69,7 +69,7 @@ def load_and_preprocess_data(intents):
             extracted_words = word_tokenize(pattern)
             # build list of the words
             words_list.extend(extracted_words)
-            # save couple pattern and corresponfing labels
+            # save couple pattern and corresponding labels
             patterns_lemmatized.append(lemmatize_words(extracted_words))
             labels.append(intent['tag'])
 
