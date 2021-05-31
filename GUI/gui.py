@@ -92,7 +92,7 @@ class ChatBotGUI(Tk):
         self.default_chat_log()
 
     def default_chat_log(self):
-        self.chat_log_window.config(foreground="#442265", font=("Calibri", 10))
+        self.chat_log_window.config(foreground="#442265", font=(FONT_CHAT, FONT_SIZE_CHAT))
         self.chat_log_window.config(state=NORMAL)
         self.chat_log_window.insert(END, "\nBOT:  ", "bot")
         self.chat_log_window.insert(INSERT,
@@ -104,7 +104,7 @@ class ChatBotGUI(Tk):
         self.entry_box.config(fg='grey')
         self.entry_box.insert(END, default_message)
         self.entry_box.bind("<FocusIn>", self.entry_box_focus_in)
-        self.entry_box.bind("<FocusOut>", lambda event, arg: self.entry_box_focus_out(event, default_message))
+        self.entry_box.bind("<FocusOut>", lambda event: self.entry_box_focus_out(event, default_message))
 
     def entry_box_focus_in(self, event):
         self.entry_box.delete(0, END)
@@ -132,7 +132,7 @@ class ChatBotGUI(Tk):
         self.entry_box.delete("0", END)
 
         if message != '':
-            self.chat_log_window.config(foreground="#442265", font=("Calibri", 10))
+            self.chat_log_window.config(foreground="#442265", font=(FONT_CHAT, FONT_SIZE_CHAT))
 
             self.chat_log_window.config(state=NORMAL)
             self.chat_log_window.insert(END, "\nYOU:  ", "you")
