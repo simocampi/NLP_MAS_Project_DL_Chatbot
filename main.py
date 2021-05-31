@@ -1,9 +1,5 @@
-import keras
-
-
-def main():
-    print("ciao ciao")
-
+from GUI.gui import ChatBotGUI
 
 if __name__ == "__main__":
-    main()
+    chatbot = ChatBotGUI()
+    chatbot.run()

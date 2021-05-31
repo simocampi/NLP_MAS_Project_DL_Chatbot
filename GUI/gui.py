@@ -3,7 +3,7 @@ import json
 from network.network import ChatbotDNN
 from network.data_preprocessing import get_train_and_test
 import tkinter.ttk as ttk
-from gui_settings import *
+from GUI.gui_settings import *
 import random
 import os
 from time import sleep
@@ -37,12 +37,12 @@ class ChatBotGUI(Tk):
 
         # add iconphoto
 
-        self.bot_photo = PhotoImage(file="icons/bot.png")
-        self.logo = PhotoImage(file="icons/logo.png")
+        self.bot_photo = PhotoImage(file="GUI/icons/bot.png")
+        self.logo = PhotoImage(file="GUI/icons/logo.png")
         self.iconphoto(False, self.bot_photo)
-        self.click_btn = PhotoImage(file='icons/send_btn.png')
+        self.click_btn = PhotoImage(file='GUI/icons/send_btn.png')
 
-        self.loading_gif = PhotoImage(file="icons/loading.gif")
+        self.loading_gif = PhotoImage(file="GUI/icons/loading.gif")
 
         self.bg_logo = Label(self, bg=HEADER_BACKGROUD_COLOR, fg="white")
         self.head_title_label = Label(self, bg=HEADER_BACKGROUD_COLOR, fg="white",
@@ -81,7 +81,7 @@ class ChatBotGUI(Tk):
         self.send_button.place(x=420, y=520, height=25, width=25)
 
         self.chat_log_window_config()
-        self.intents, self.dnn_chatbot = load_data_model(r"../network/intents.json")
+        self.intents, self.dnn_chatbot = load_data_model(r"intents.json")
         self.default_entry_box()
         self.default_chat_log()
 
@@ -161,6 +161,3 @@ class ChatBotGUI(Tk):
         self.mainloop()
 
 
-if __name__ == "__main__":
-    chatbot = ChatBotGUI()
-    chatbot.run()
