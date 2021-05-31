@@ -74,9 +74,17 @@
           "context": [""]
         },
         {
-          "tag": "",
-          "patterns": [""],
-          "responses": [""],
+          "tag": "heart_attack_symptoms",
+          "patterns": ["What is a heart attack?","What are the symptoms of a heart attack?", "in what ways does a heart attack manifest itself?",
+                      "how do i recognize a heart attack"],
+          "responses": ["An heart attack happens when a part of the heart muscle \ndoesn't get enough blood. The symptoms may be:\n\n - Chest pain or discomfort.\n\n- Feeling weak, light-headed, or faint.\n\n- Pain or discomfort in one or both arms or shoulders.\n\n- Shortness of breath."],
+          "context": [""]
+        },
+        {
+          "tag": "heart-attack-suggestion",
+          "patterns": ["What I have to do in case of heart attack.", "What I can do in case of heart attack.",
+                        "What I should do in case of heart attack.", "if I notice symptoms of a heart attack", "how should i behave heart attack"],
+          "responses": ["If you notice the symptoms of a heart attack in yourself or someone else, call the emergence number (112 in Italy) immediately. \nThe sooner you get to an emergency room, the sooner you can get treatment to reduce the amount of damage to the heart muscle.\n At the hospital, health care professionals can run tests to find out if a heart attack is happening and decide the best treatment.\n In some cases, a heart attack requires cardiopulmonary resuscitation (CPR) or an electrical shock (defibrillation) to the heart to get\n the heart pumping again. You can make these procedure if you are trained to do it and if you have a certification."],
           "context": [""]
         },
         {
