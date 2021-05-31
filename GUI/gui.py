@@ -83,7 +83,7 @@ class ChatBotGUI(Tk):
 
         self.chat_log_window_config()
         self.intents, self.dnn_chatbot = load_data_model(r"intents.json")
-        self.default_entry_box()
+        self.default_entry_box(default_message=" Type here your question...")
         self.default_chat_log()
 
     def chat_log_window_config(self):
