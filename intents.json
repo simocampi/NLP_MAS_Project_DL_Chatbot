@@ -94,13 +94,34 @@
           "context": [""]
         },
         {
-          "tag": "covid-19_suggestion",
+          "tag": "covid-19_suggestions",
           "patterns": [""],
           "responses": [""],
           "context": [""]
         },
         {
-          "tag": "noanswer",
+          "tag": "acne",
+          "patterns": ["What is acne?", "causes acne", "what causes acne?", "What are the causes of the acne?"],
+          "responses": ["Acne is a skin condition caused by dead skin cells sticking together and clogging up pores. Bacteria can play a role, too. A big trigger for the onset of acne is puberty."],
+          "context": [""]
+        },
+        {
+          "tag": "acne-treatments",
+          "patterns": ["Acne remedies", "acne treatments","What are the treatments for acne?", "In which way i can cure the acne",
+                      "In which way i should cure the acne", "In which way i may cure the acne"],
+          "responses": ["The are some drugs suitable for acne. Contact your Doctor to give more information."],
+          "context": [""]
+        },
+         {
+          "tag": "acne-symptoms",
+          "patterns": ["I have Crusting of skin bumps.", "I have a lot of cysts.", "I have Pustules on my body", "I have cysts on my body",
+            "I have cysts in my face", "I have pustules on my faces", "I have redness around the skin eruptions, on may face",
+            "my face is covered by pustules", "my face is covered by cysts", "In my body there many cysts and pustules"],
+          "responses": ["You may have the acne. I suggest a dermatologist visit."],
+          "context": [""]
+        },
+        {
+          "tag": "no_answer",
           "patterns": [""],
           "responses": ["I cannot understand your question.", "Try to reformulate your question.", "Provide more information."],
           "context": [""]
