@@ -44,13 +44,12 @@ class ChatBotGUI(Tk):
 
         self.loading_gif = PhotoImage(file="icons/loading.gif")
 
-        self.bg_logo = Label(self, bg="#007CB9", fg="white")
-        self.head_title_label = Label(self, bg="#007CB9", fg="white",
+        self.bg_logo = Label(self, bg=HEADER_BACKGROUD_COLOR, fg="white")
+        self.head_title_label = Label(self, bg=HEADER_BACKGROUD_COLOR, fg="white",
                                       text="Medical-Bot Assistant", font="Helvetica "
-                                                                         "16 bold")
-
+                                                                 "16 bold")
         # Header
-        self.bot_logo_label = Label(self, bg="#007CB9", image=self.bot_photo)
+        self.bot_logo_label = Label(self, bg=HEADER_BACKGROUD_COLOR, image=self.bot_photo)
 
         # Create Chat window
         self.chat_log_window = self.create_chat_log_window()
