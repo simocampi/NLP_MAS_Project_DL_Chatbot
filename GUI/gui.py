@@ -27,7 +27,8 @@ class ChatBotGUI(Tk):
         self.iconphoto(False, self.bot_photo)
         self.click_btn = PhotoImage(file='icons/send_btn.png')
 
-        self.bg_logo = Label(self, bg="#007CB9", fg="white", text="Medical-Bot Assistant",)
+        self.bg_logo = Label(self, bg="#007CB9", fg="white")
+        self.head_title_label = Label(self, bg="#007CB9", fg="white", text="Medical-Bot Assistant")
 
 
         # Header
@@ -55,6 +56,7 @@ class ChatBotGUI(Tk):
         # Place all components on the main window
 
         self.bg_logo.place(x=0, y=0, height=62, width=580)
+        self.head_title_label.place(x=100, y=32, height=10, width=150)
         self.head_label.place(x=300, y=0)
         self.scrollbar.place(x=429, y=63, height=420)
         self.chat_log_window.place(x=2, y=63, height=420, width=428)
