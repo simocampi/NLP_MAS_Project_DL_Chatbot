@@ -19,20 +19,20 @@ class ChatBotGUI(Tk):
         self.resizable(width=FALSE, height=FALSE)
         self.configure(bg=BACKGROUND_COLOR)
 
-
         # add iconphoto
 
-        self.bot_photo = PhotoImage(file="icons/bot2.png")
+        self.bot_photo = PhotoImage(file="icons/bot.png")
         self.logo = PhotoImage(file="icons/logo.png")
         self.iconphoto(False, self.bot_photo)
         self.click_btn = PhotoImage(file='icons/send_btn.png')
 
         self.bg_logo = Label(self, bg="#007CB9", fg="white")
-        self.head_title_label = Label(self, bg="#007CB9", fg="white", text="Medical-Bot Assistant")
-
+        self.head_title_label = Label(self, bg="#007CB9", fg="white",
+                                      text="Medical-Bot Assistant", font="Helvetica "
+                                                                         "16 bold")
 
         # Header
-        self.head_label = Label(self, bg="#007CB9", image=self.bot_photo)
+        self.bot_logo_label = Label(self, bg="#007CB9", image=self.bot_photo)
 
         # Create Chat window
         self.chat_log_window = self.create_chat_log_window()
@@ -56,12 +56,14 @@ class ChatBotGUI(Tk):
         # Place all components on the main window
 
         self.bg_logo.place(x=0, y=0, height=62, width=580)
-        self.head_title_label.place(x=100, y=32, height=10, width=150)
-        self.head_label.place(x=300, y=0)
+        self.head_title_label.place(x=50, y=15, height=35, width=250)
+        self.bot_logo_label.place(x=300, y=0, height=60, width=40)
         self.scrollbar.place(x=429, y=63, height=420)
         self.chat_log_window.place(x=2, y=63, height=420, width=428)
         self.entry_box.place(x=9, y=500, height=63, width=405)
-        self.entry_box.focus()
+
+        self.default_entry_box()
+
         self.send_button.place(x=420, y=520, height=25, width=25)
 
         self.chat_log_window.tag_config('you', foreground="red", background="#ECF6FF")
@@ -86,6 +88,21 @@ class ChatBotGUI(Tk):
                                     "Welcome! I'm your personal virtual medical assistant. How can I help you?" + '\n\n',
                                     "bot2")
         self.chat_log_window.config(state=DISABLED)
+
+    def default_entry_box(self, default_message="type here a message..."):
+        self.entry_box.config(fg='grey')
+        self.entry_box.insert(END, default_message)
+        self.entry_box.bind("<FocusIn>", self.entry_box_focus_in)
+        self.entry_box.bind("<FocusOut>", lambda event, arg: self.entry_box_focus_out(event, default_message))
+
+    def entry_box_focus_in(self, event):
+        self.entry_box.delete(0, END)
+        self.entry_box.config(fg='black')
+
+    def entry_box_focus_out(self, event, default_message):
+        self.entry_box.delete(0, END)
+        self.entry_box.config(fg='grey')
+        self.entry_box.insert(0, default_message)
 
     def bot_answer(self, user_question):
 
