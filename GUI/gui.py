@@ -31,7 +31,7 @@ class ChatBotGUI(Tk):
     def __init__(self, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
         self.title("Medical-bot Assistant")
-        self.geometry(str(WINDOW_WIDTH)+"x"+str(WINDOW_HEIGTH))
+        self.geometry(str(WINDOW_WIDTH) + "x" + str(WINDOW_HEIGHT))
         self.resizable(width=FALSE, height=FALSE)
         self.configure(bg=BACKGROUND_COLOR)
 
@@ -47,13 +47,12 @@ class ChatBotGUI(Tk):
         self.bg_logo = Label(self, bg=HEADER_BACKGROUD_COLOR, fg="white")
         self.head_title_label = Label(self, bg=HEADER_BACKGROUD_COLOR, fg="white",
                                       text="Medical-Bot Assistant", font="Helvetica "
-                                                                 "16 bold")
+                                                                         "16 bold")
         # Header
         self.bot_logo_label = Label(self, bg=HEADER_BACKGROUD_COLOR, image=self.bot_photo)
 
         # Create Chat window
         self.chat_log_window = self.create_chat_log_window()
-
         self.chat_log_window.config(state=DISABLED)
 
         # Bind scrollbar to Chat window
@@ -67,29 +66,33 @@ class ChatBotGUI(Tk):
         # enter key to send message
         self.bind("<Return>", self.chat_callback)
 
-        ttk.Separator(self, orient=HORIZONTAL).place(x=12, y=481, relwidth=0.9)
+        ttk.Separator(self, orient=HORIZONTAL).place(x=11, y=481, relwidth=0.9)
 
         # Place all components on the main window
 
-        self.bg_logo.place(x=0, y=0, height=62, width=580)
-        self.head_title_label.place(x=50, y=15, height=35, width=250)
-        self.bot_logo_label.place(x=320, y=0, height=60, width=40)
-        self.scrollbar.place(x=429, y=63, height=420)
-        self.chat_log_window.place(x=2, y=63, height=420, width=428)
-        self.entry_box.place(x=9, y=500, height=63, width=405)
+        self.bg_logo.place(x=0, y=0, height=HEAD_LABEL_HEIGHT, width=WINDOW_WIDTH)
+        self.head_title_label.place(x=70, y=(HEAD_LABEL_HEIGHT // 2.5), height=15, width=250)
+        self.bot_logo_label.place(x=(WINDOW_WIDTH - 100), y=2, height=60, width=40)
+        self.scrollbar.place(x=WINDOW_WIDTH - 21, y=HEAD_LABEL_HEIGHT, height=CHAT_LOG_WINDOW_HEIGHT)
+        self.chat_log_window.place(x=1, y=63, height=CHAT_LOG_WINDOW_HEIGHT + 1, width=WINDOW_WIDTH - 22)
+        self.entry_box.place(x=10, y=(HEAD_LABEL_HEIGHT + CHAT_LOG_WINDOW_HEIGHT),
+                             height= ENTRY_BOX_HEIGHT,
+                             width=WINDOW_WIDTH - 45)
 
         self.default_entry_box()
 
         self.send_button.place(x=420, y=520, height=25, width=25)
 
+        self.chat_log_window_config()
+        self.intents, self.dnn_chatbot = load_data_model(r"../network/intents.json")
+
+        self.default_chat_log()
+
+    def chat_log_window_config(self):
         self.chat_log_window.tag_config('you', foreground="red", background="#ECF6FF")
         self.chat_log_window.tag_config('you2', foreground="black", background="#ECF6FF")
         self.chat_log_window.tag_config('bot', foreground="Blue", background="#D7ECFF")
         self.chat_log_window.tag_config('bot2', foreground="Black", background="#D7ECFF")
-
-        self.intents, self.dnn_chatbot = load_data_model(r"../network/intents.json")
-
-        self.default_chat_log()
 
     def default_chat_log(self):
         self.chat_log_window.config(foreground="#442265", font=(FONT_CHAT, FONT_SIZE_CHAT))
