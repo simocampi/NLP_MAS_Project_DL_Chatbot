@@ -3,11 +3,27 @@ import json
 from network.network import ChatbotDNN
 from network.data_preprocessing import get_train_and_test
 import tkinter.ttk as ttk
-from PIL import Image, ImageTk
+from gui_settings import *
 import random
 import os
+from time import sleep
 
 BACKGROUND_COLOR = "white"
+
+
+def load_data_model(intents_path):
+    data = open(intents_path).read()
+    intents = json.loads(data)
+    if not os.path.isfile(r"model/model.h5"):
+
+        x_train, y_test = get_train_and_test(intents)
+        dnn_chatbot = ChatbotDNN(x_train, y_test)
+        dnn_chatbot.fit()
+
+    else:
+        dnn_chatbot = ChatbotDNN()
+
+    return intents, dnn_chatbot
 
 
 class ChatBotGUI(Tk):
@@ -15,7 +31,7 @@ class ChatBotGUI(Tk):
     def __init__(self, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
         self.title("Medical-bot Assistant")
-        self.geometry("450x580")
+        self.geometry(str(WINDOW_WIDTH)+"x"+str(WINDOW_HEIGTH))
         self.resizable(width=FALSE, height=FALSE)
         self.configure(bg=BACKGROUND_COLOR)
 
@@ -25,6 +41,8 @@ class ChatBotGUI(Tk):
         self.logo = PhotoImage(file="icons/logo.png")
         self.iconphoto(False, self.bot_photo)
         self.click_btn = PhotoImage(file='icons/send_btn.png')
+
+        self.loading_gif = PhotoImage(file="icons/loading.gif")
 
         self.bg_logo = Label(self, bg="#007CB9", fg="white")
         self.head_title_label = Label(self, bg="#007CB9", fg="white",
@@ -45,19 +63,18 @@ class ChatBotGUI(Tk):
 
         # Create button "SEND"
         self.send_button = self.create_send_button()
-
         # Create the box to enter message
         self.entry_box = self.create_entry_box()
         # enter key to send message
         self.bind("<Return>", self.chat_callback)
 
-        ttk.Separator(self, orient=HORIZONTAL).place(x=0, y=481, relwidth=0.5)
+        ttk.Separator(self, orient=HORIZONTAL).place(x=12, y=481, relwidth=0.9)
 
         # Place all components on the main window
 
         self.bg_logo.place(x=0, y=0, height=62, width=580)
         self.head_title_label.place(x=50, y=15, height=35, width=250)
-        self.bot_logo_label.place(x=300, y=0, height=60, width=40)
+        self.bot_logo_label.place(x=320, y=0, height=60, width=40)
         self.scrollbar.place(x=429, y=63, height=420)
         self.chat_log_window.place(x=2, y=63, height=420, width=428)
         self.entry_box.place(x=9, y=500, height=63, width=405)
@@ -71,17 +88,12 @@ class ChatBotGUI(Tk):
         self.chat_log_window.tag_config('bot', foreground="Blue", background="#D7ECFF")
         self.chat_log_window.tag_config('bot2', foreground="Black", background="#D7ECFF")
 
-        data = open(r"../network/intents.json").read()
-        self.intents = json.loads(data)
+        self.intents, self.dnn_chatbot = load_data_model(r"../network/intents.json")
 
-        if not os.path.isfile(r"model/model.h5"):
-            x_train, y_test = get_train_and_test(self.intents)
-            self.dnn_chatbot = ChatbotDNN(x_train, y_test)
-            self.dnn_chatbot.fit()
+        self.default_chat_log()
 
-        else:
-            self.dnn_chatbot = ChatbotDNN()
-
+    def default_chat_log(self):
+        self.chat_log_window.config(foreground="#442265", font=("Calibri", 10))
         self.chat_log_window.config(state=NORMAL)
         self.chat_log_window.insert(END, "\nBOT:  ", "bot")
         self.chat_log_window.insert(INSERT,
@@ -89,7 +101,7 @@ class ChatBotGUI(Tk):
                                     "bot2")
         self.chat_log_window.config(state=DISABLED)
 
-    def default_entry_box(self, default_message="type here a message..."):
+    def default_entry_box(self, default_message="Type here a message..."):
         self.entry_box.config(fg='grey')
         self.entry_box.insert(END, default_message)
         self.entry_box.bind("<FocusIn>", self.entry_box_focus_in)
