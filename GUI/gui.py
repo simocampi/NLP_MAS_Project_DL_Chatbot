@@ -76,16 +76,13 @@ class ChatBotGUI(Tk):
         self.scrollbar.place(x=WINDOW_WIDTH - 21, y=HEAD_LABEL_HEIGHT, height=CHAT_LOG_WINDOW_HEIGHT)
         self.chat_log_window.place(x=1, y=63, height=CHAT_LOG_WINDOW_HEIGHT + 1, width=WINDOW_WIDTH - 22)
         self.entry_box.place(x=10, y=(HEAD_LABEL_HEIGHT + CHAT_LOG_WINDOW_HEIGHT),
-                             height= ENTRY_BOX_HEIGHT,
+                             height=ENTRY_BOX_HEIGHT,
                              width=WINDOW_WIDTH - 45)
-
-        self.default_entry_box()
-
         self.send_button.place(x=420, y=520, height=25, width=25)
 
         self.chat_log_window_config()
         self.intents, self.dnn_chatbot = load_data_model(r"../network/intents.json")
-
+        self.default_entry_box()
         self.default_chat_log()
 
     def chat_log_window_config(self):
