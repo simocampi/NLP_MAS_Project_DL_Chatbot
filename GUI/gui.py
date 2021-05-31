@@ -63,6 +63,7 @@ class ChatBotGUI(Tk):
         self.send_button = self.create_send_button()
         # Create the box to enter message
         self.entry_box = self.create_entry_box()
+
         # enter key to send message
         self.bind("<Return>", self.chat_callback)
 
@@ -74,8 +75,8 @@ class ChatBotGUI(Tk):
         self.head_title_label.place(x=70, y=(HEAD_LABEL_HEIGHT // 2.5), height=15, width=250)
         self.bot_logo_label.place(x=(WINDOW_WIDTH - 100), y=2, height=60, width=40)
         self.scrollbar.place(x=WINDOW_WIDTH - 21, y=HEAD_LABEL_HEIGHT, height=CHAT_LOG_WINDOW_HEIGHT)
-        self.chat_log_window.place(x=1, y=63, height=CHAT_LOG_WINDOW_HEIGHT + 1, width=WINDOW_WIDTH - 22)
-        self.entry_box.place(x=10, y=(HEAD_LABEL_HEIGHT + CHAT_LOG_WINDOW_HEIGHT),
+        self.chat_log_window.place(x=1, y=63, height=CHAT_LOG_WINDOW_HEIGHT - 5, width=WINDOW_WIDTH - 22)
+        self.entry_box.place(x=10, y=(HEAD_LABEL_HEIGHT + CHAT_LOG_WINDOW_HEIGHT + 5),
                              height=ENTRY_BOX_HEIGHT,
                              width=WINDOW_WIDTH - 45)
         self.send_button.place(x=420, y=520, height=25, width=25)
@@ -101,18 +102,18 @@ class ChatBotGUI(Tk):
         self.chat_log_window.config(state=DISABLED)
 
     def default_entry_box(self, default_message="Type here a message..."):
-        self.entry_box.config(fg='grey')
+        self.entry_box.config(fg='grey', font=(FONT_CHAT, FONT_SIZE_CHAT))
         self.entry_box.insert(END, default_message)
         self.entry_box.bind("<FocusIn>", self.entry_box_focus_in)
         self.entry_box.bind("<FocusOut>", lambda event: self.entry_box_focus_out(event, default_message))
 
     def entry_box_focus_in(self, event):
         self.entry_box.delete(0, END)
-        self.entry_box.config(fg='black')
+        self.entry_box.config(fg='black', font=(FONT_CHAT, FONT_SIZE_CHAT))
 
     def entry_box_focus_out(self, event, default_message):
         self.entry_box.delete(0, END)
-        self.entry_box.config(fg='grey')
+        self.entry_box.config(fg='grey', font=(FONT_CHAT, FONT_SIZE_CHAT))
         self.entry_box.insert(0, default_message)
 
     def bot_answer(self, user_question):
@@ -159,5 +160,3 @@ class ChatBotGUI(Tk):
 
     def run(self):
         self.mainloop()
-
-

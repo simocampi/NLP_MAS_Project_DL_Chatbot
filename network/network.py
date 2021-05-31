@@ -63,6 +63,8 @@ class ChatbotDNN:
         with open('model/words_list_lemmatized.pickle', 'rb') as file:
             words_list_lemmatized = pickle.load(file)
 
+        print("\nVOCABULARY DIMENSION: ", len(words_list_lemmatized), "\n")
+
         with open('model/classes.pickle', 'rb') as file:
             classes = pickle.load(file)
 
@@ -80,4 +82,4 @@ class ChatbotDNN:
         if probability >= 0.75:
             return classes[np.argmax(prediction)]
         else:
-            return "noanswer"
+            return "no_answer"
