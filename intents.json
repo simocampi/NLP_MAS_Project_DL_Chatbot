@@ -104,7 +104,7 @@
         {
           "tag": "covid-19",
           "patterns": ["What is covid-19", "what is coronavirus ?", "What are the symptoms of coronavirus?"],
-          "responses": ["People with COVID-19 have had a wide range of symptoms reported - ranging from mild symptoms to severe illness. \n Symptoms may appear 2-14 days after exposure to the virus. Anyone can have mild to severe symptoms. \n\n People with these symptoms may have COVID-19: \n\n - Fever \n\n - Cough \n\n - Shortness of breath or difficulty breathing \n\n - New loss of taste or smell \n\n - Sore throat\n\n - Nausea or vomiting \n\n - Congestion or runny nose \n\n - Diarrhea"]
+          "responses": ["People with COVID-19 have had a wide range of symptoms reported - ranging from mild symptoms to severe illness. Symptoms may appear 2-14 days after exposure to the virus. Anyone can have mild to severe symptoms. \n\n People with these symptoms may have COVID-19: \n\n - Fever \n\n - Cough \n\n - Shortness of breath or difficulty breathing \n\n - New loss of taste or smell \n\n - Sore throat\n\n - Nausea or vomiting \n\n - Congestion or runny nose \n\n - Diarrhea"]
 
         },
         {

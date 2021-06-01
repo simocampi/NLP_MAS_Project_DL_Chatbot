@@ -36,6 +36,7 @@ class ChatBotGUI(Tk):
         self.configure(bg=BACKGROUND_COLOR)
 
         self._ANSWER_TO_BOT = False
+        self.tag_for_answer_to_bot = ""
 
         # add iconphoto
 
@@ -133,15 +134,18 @@ class ChatBotGUI(Tk):
         return None
 
     # sometimes is the bot to ask question
-    def bot_question(self, question):
+    def insert_bot_question(self, question):
         self.chat_log_window.insert(END, "\nBOT:  ", "bot")
         self.chat_log_window.insert(INSERT, question + '\n\n', "bot2")
 
     def chat_callback(self, event):
         self.chat()
 
-    def answer_to_bot_question(self):
-        pass
+    def check_need_bot_question(self, res, question, tag):
+        if res[0] == tag:
+            self.insert_bot_question(question)
+            self._ANSWER_TO_BOT = True
+            self.tag_for_answer_to_bot = tag
 
     def chat(self):
 
@@ -157,22 +161,20 @@ class ChatBotGUI(Tk):
 
             res = self.get_bot_answer(message)
             if self._ANSWER_TO_BOT is False:
-                self.chat_log_window.insert(END, "\nBOT:  ", "bot")
-                self.chat_log_window.insert(INSERT, res[1] + '\n\n', "bot2")
 
-                if res[0] == "flue_symptoms":
-                    self.bot_question("Do you want more information about the covid-19 symptoms ?")
-                    self._ANSWER_TO_BOT = True
+                self.insert_bot_question(res[1])
+                self.check_need_bot_question(res=res, question="Do you want more information about the covid-19 "
+                                                               "symptoms ?", tag="flue_symptoms")
             else:
-
                 if message.lower() == "yes":
-                    bot_answ = self.get_responses_from_tag("covid-19")
-                    self.chat_log_window.insert(END, "\nBOT:  ", "bot")
-                    self.chat_log_window.insert(INSERT, bot_answ[0] + '\n\n', "bot2")
+                    bot_answ = "Something Wrong..."
+                    if self.tag_for_answer_to_bot == "flue_symptoms":
+                        bot_answ = self.get_responses_from_tag("covid-19")
+
+                    self.insert_bot_question(bot_answ[0])
 
                 elif message.lower() == "no":
-                    self.chat_log_window.insert(END, "\nBOT:  ", "bot")
-                    self.chat_log_window.insert(INSERT, "OK, as you want." + '\n\n', "bot2")
+                    self.insert_bot_question("OK, as you want.")
 
                 self._ANSWER_TO_BOT = False
 
