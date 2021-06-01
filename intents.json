@@ -22,39 +22,48 @@
         },
         {
           "tag": "headache",
-          "patterns": ["I have a headache","I have a very bad headache, what could I take?", "I have a headache, what can I do?", "I had a headache", "I had a severe headache"],
+          "patterns": ["I have a headache","I have a very bad headache, what could I take?", "I have a headache, what can I do?",
+                        "I had a headache", "I had a severe headache"],
           "responses": ["You should drink water, take some magnesium and try to sleep. If doesn't go away you can take a medicine like aspirin, paracetamol or ibuprofen. "],
           "context": [""]
         },
         {
           "tag": "common_cold",
-          "patterns": ["I have a cold, what could I take", "I have a cold, what could I do?", "What should i do if i have a cold?", "I have cold, what are the remedies?", "I have cold, what is the treatment", "cold treatment","cold remedies"],
+          "patterns": ["I have a cold, what could I take", "I have a cold, what could I do?",
+                        "What should i do if i have a cold?", "I have cold, what are the remedies?",
+                        "I have cold, what is the treatment", "cold treatment","cold remedies"],
           "responses": ["You should rest and sleep, keep warm, drink plenty of water and if you have a fever, take some paracetamol."],
           "context": [""]
         },
          {
           "tag":"common_cold_symptoms",
-          "patterns": ["I have a blocked nose", "I have a blocked nose, what could I have?", "I have a raised temperature", "I sneeze all the time", "I am feeling a bit run down", "I am feeling under the weather", "I have a sore throat", "I have a sore throat, what could I have?"],
+          "patterns": ["I have a blocked nose", "I have a blocked nose, what could I have?",
+                      "I have a raised temperature", "I sneeze all the time", "I am feeling a bit run down",
+                      "I am feeling under the weather", "I have a sore throat", "I have a sore throat, what could I have?"],
           "responses": ["With these symptoms you may have a common cold."],
           "context": [""]
         },
         {
           "tag": "blood_pressure",
-          "patterns": ["I have the pressure of the blood high, what does it means?", "I have measured the pressure and it is high", "My pressure is high", "I have a high blood pressure"],
+          "patterns": ["I have the pressure of the blood high, what does it means?", "I have measured the pressure and it is high",
+                        "My pressure is high", "I have a high blood pressure"],
           "responses": ["You may be hypertensive, I suggest you to contact your doctor."],
           "context": [""]
 
         },
         {
           "tag": "blood_pressure_reference",
-          "patterns": ["What are the normal level of blood pressure?", "How can I know if my blood pressure is ok?", "normal values for pressure", "guidelines for pressure", "I want a guideline for the blood pressure", "What are the normal values for the blood pressure?"],
+          "patterns": ["What are the normal level of blood pressure?", "How can I know if my blood pressure is ok?",
+                        "normal values for pressure", "guidelines for pressure", "I want a guideline for the blood pressure",
+                        "What are the normal values for the blood pressure?"],
           "responses": ["If the blood pressure is consistently 130/80 mm Hg or higher, the blood pressure is high, there is the presence of hypertension. In this case contact a doctor for further information. Otherwise the pressure of the blood is normal."],
           "context": [""]
         },
 
          {
           "tag": "flue_symptoms",
-          "patterns": ["I have a little fever.", "I have got a fever.", "I'm running a fever", "I'm running a temperature", "I have a high fever, what could I have", "I've got temperature", "i've got high temperature"],
+          "patterns": ["I have a little fever.", "I have got a fever.", "I'm running a fever", "I'm running a temperature",
+                        "I have a high fever, what could I have", "I've got temperature", "i've got high temperature"],
           "responses": ["You could have a flu."],
           "context": [""]
         },
