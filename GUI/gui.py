@@ -35,6 +35,8 @@ class ChatBotGUI(Tk):
         self.resizable(width=FALSE, height=FALSE)
         self.configure(bg=BACKGROUND_COLOR)
 
+        self._ANSWER_TO_BOT = False
+
         # add iconphoto
 
         self.bot_photo = PhotoImage(file="GUI/icons/bot.png")
@@ -116,16 +118,30 @@ class ChatBotGUI(Tk):
         self.entry_box.config(fg='grey', font=(FONT_CHAT, FONT_SIZE_CHAT))
         self.entry_box.insert(0, default_message)
 
-    def bot_answer(self, user_question):
+    def get_bot_answer(self, user_question):
 
         predicted_class = self.dnn_chatbot.predict(user_question)
         for row in self.intents["intents"]:
             if row["tag"] == predicted_class:
-                return random.choice(row["responses"])
-        return "Something went wrong!"
+                return row["tag"], random.choice(row["responses"])
+        return None, "Something went wrong!"
+
+    def get_responses_from_tag(self, tag):
+        for row in self.intents["intents"]:
+            if row["tag"] == tag:
+                return row["responses"]
+        return None
+
+    # sometimes is the bot to ask question
+    def bot_question(self, question):
+        self.chat_log_window.insert(END, "\nBOT:  ", "bot")
+        self.chat_log_window.insert(INSERT, question + '\n\n', "bot2")
 
     def chat_callback(self, event):
         self.chat()
+
+    def answer_to_bot_question(self):
+        pass
 
     def chat(self):
 
@@ -139,24 +155,40 @@ class ChatBotGUI(Tk):
             self.chat_log_window.insert(END, "\nYOU:  ", "you")
             self.chat_log_window.insert(INSERT, message + '\n\n', "you2")
 
-            res = self.bot_answer(message)
+            res = self.get_bot_answer(message)
+            if self._ANSWER_TO_BOT is False:
+                self.chat_log_window.insert(END, "\nBOT:  ", "bot")
+                self.chat_log_window.insert(INSERT, res[1] + '\n\n', "bot2")
 
-            self.chat_log_window.insert(END, "\nBOT:  ", "bot")
-            self.chat_log_window.insert(INSERT, res + '\n\n', "bot2")
+                if res[0] == "flue_symptoms":
+                    self.bot_question("Do you want more information about the covid-19 symptoms ?")
+                    self._ANSWER_TO_BOT = True
+            else:
+
+                if message.lower() == "yes":
+                    bot_answ = self.get_responses_from_tag("covid-19")
+                    self.chat_log_window.insert(END, "\nBOT:  ", "bot")
+                    self.chat_log_window.insert(INSERT, bot_answ[0] + '\n\n', "bot2")
+
+                elif message.lower() == "no":
+                    self.chat_log_window.insert(END, "\nBOT:  ", "bot")
+                    self.chat_log_window.insert(INSERT, "OK, as you want." + '\n\n', "bot2")
+
+                self._ANSWER_TO_BOT = False
 
             self.chat_log_window.config(state=DISABLED)
             self.chat_log_window.yview(END)
 
     def create_chat_log_window(self):
         return Text(self, bd=0, bg="white", height="8",
-                    width="50", font="Calibri")
+                    width="50", font=FONT_CHAT)
 
     def create_send_button(self):
         return Button(master=self, image=self.click_btn, height=30, width=30, command=self.chat, relief="flat",
                       highlightthickness=0, bd=0, bg=BACKGROUND_COLOR, activebackground=BACKGROUND_COLOR)
 
     def create_entry_box(self):
-        return Entry(self, bd=0, bg="#ECF6FF", width="29", font="Calibri")
+        return Entry(self, bd=0, bg="#ECF6FF", width="29", font=FONT_CHAT)
 
     def run(self):
         self.mainloop()

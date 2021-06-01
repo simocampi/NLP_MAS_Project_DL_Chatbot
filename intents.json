@@ -2,8 +2,7 @@
 
         {"tag": "greeting",
          "patterns": ["Hi there",  "Is anyone there?","Hi!","Hey","Hola", "Hello", "Good day"],
-         "responses": ["Hello!!", "Good to see you again", "Hi there, how can I help?"],
-         "context": [""]
+         "responses": ["Hello!!", "Good to see you again", "Hi there, how can I help?"]
         },
         {"tag": "goodbye",
          "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time"],
@@ -24,31 +23,31 @@
           "tag": "headache",
           "patterns": ["I have a headache","I have a very bad headache, what could I take?", "I have a headache, what can I do?",
                         "I had a headache", "I had a severe headache"],
-          "responses": ["You should drink water, take some magnesium and try to sleep. If doesn't go away you can take a medicine like aspirin, paracetamol or ibuprofen. "],
-          "context": [""]
+          "responses": ["You should drink water, take some magnesium and try to sleep. If doesn't go away you can take a medicine like aspirin, paracetamol or ibuprofen. "]
+
         },
         {
           "tag": "common_cold",
           "patterns": ["I have a cold, what could I take", "I have a cold, what could I do?",
                         "What should i do if i have a cold?", "I have cold, what are the remedies?",
                         "I have cold, what is the treatment", "cold treatment","cold remedies"],
-          "responses": ["You should rest and sleep, keep warm, drink plenty of water and if you have a fever, take some paracetamol."],
-          "context": [""]
+          "responses": ["You should rest and sleep, keep warm, drink plenty of water and if you have a fever, take some paracetamol."]
+
         },
          {
           "tag":"common_cold_symptoms",
           "patterns": ["I have a blocked nose", "I have a blocked nose, what could I have?",
                       "I have a raised temperature", "I sneeze all the time", "I am feeling a bit run down",
                       "I am feeling under the weather", "I have a sore throat", "I have a sore throat, what could I have?"],
-          "responses": ["With these symptoms you may have a common cold."],
-          "context": [""]
+          "responses": ["With these symptoms you may have a common cold."]
+
         },
         {
           "tag": "blood_pressure",
           "patterns": ["I have the pressure of the blood high, what does it means?", "I have measured the pressure and it is high",
                         "My pressure is high", "I have a high blood pressure"],
-          "responses": ["You may be hypertensive, I suggest you to contact your doctor."],
-          "context": [""]
+          "responses": ["You may be hypertensive, I suggest you to contact your doctor."]
+
 
         },
         {
@@ -56,84 +55,90 @@
           "patterns": ["What are the normal level of blood pressure?", "How can I know if my blood pressure is ok?",
                         "normal values for pressure", "guidelines for pressure", "I want a guideline for the blood pressure",
                         "What are the normal values for the blood pressure?"],
-          "responses": ["If the blood pressure is consistently 130/80 mm Hg or higher, the blood pressure is high, there is the presence of hypertension. In this case contact a doctor for further information. Otherwise the pressure of the blood is normal."],
-          "context": [""]
+          "responses": ["If the blood pressure is consistently 130/80 mm Hg or higher, the blood pressure is high, there is the presence of hypertension. In this case contact a doctor for further information. Otherwise the pressure of the blood is normal."]
+
         },
 
          {
           "tag": "flue_symptoms",
           "patterns": ["I have a little fever.", "I have got a fever.", "I'm running a fever", "I'm running a temperature",
                         "I have a high fever, what could I have", "I've got temperature", "i've got high temperature"],
-          "responses": ["You could have a flu."],
-          "context": [""]
+          "responses": ["You could have a flu. You could have also the covid-19 ( or coronavirus), \n if you you have not already been vaccinated for it or have already had the disease."]
+
         },
         {
           "tag": "flu",
           "patterns": ["I have the flu, what could I take", "I have the flu, what could I do?", "What should i do if I have the flu?",
                       "I have the flu, what are the remedies?", "I have the flu, what is the treatment", "I have flu"],
-          "responses": ["You should rest and sleep, keep warm, drink plenty of water and if the fever increases a lot you could take paracetamol or ibuprofen."],
-          "context": [""]
+          "responses": ["You should rest and sleep, keep warm, drink plenty of water and if the fever increases a lot you could take paracetamol or ibuprofen."]
+
         },
         {
           "tag": "hit_limb",
           "patterns": ["I hit my knee and it is swollen", "My leg is swollen after hit with the floor",
             "I fell to the ground and I have the ankle swollen", "my ankle hurts a lot after falling", "my knee hurts after falling",
             "my elbow hurts after falling", "I have elbow swollen after falling"],
-          "responses": ["I suggest you put ice on the swollen body part, if it doesn't pass I suggest you go to the hospital for a x-ray."],
-          "context": [""]
+          "responses": ["I suggest you put ice on the swollen body part, if it doesn't pass I suggest you go to the hospital for a x-ray."]
+
         },
         {
           "tag": "heart_attack_symptoms",
           "patterns": ["What is a heart attack?","What are the symptoms of a heart attack?", "in what ways does a heart attack manifest itself?",
                       "how do i recognize a heart attack", "heart attack symptoms", "symptoms heart attack"],
-          "responses": ["An heart attack happens when a part of the heart muscle \ndoesn't get enough blood. The symptoms may be:\n\n - Chest pain or discomfort.\n\n- Feeling weak, light-headed, or faint.\n\n- Pain or discomfort in one or both arms or shoulders.\n\n- Shortness of breath."],
-          "context": [""]
+          "responses": ["An heart attack happens when a part of the heart muscle \ndoesn't get enough blood. The symptoms may be:\n\n - Chest pain or discomfort.\n\n- Feeling weak, light-headed, or faint.\n\n- Pain or discomfort in one or both arms or shoulders.\n\n- Shortness of breath."]
+
         },
         {
           "tag": "heart-attack-suggestion",
           "patterns": ["What I have to do in case of heart attack.", "What I can do in case of heart attack.",
                         "What I should do in case of heart attack.", "if I notice symptoms of a heart attack", "how should i behave heart attack"],
-          "responses": ["If you notice the symptoms of a heart attack in yourself or someone else, call the emergence number (112 in Italy) immediately. \nThe sooner you get to an emergency room, the sooner you can get treatment to reduce the amount of damage to the heart muscle.\n At the hospital, health care professionals can run tests to find out if a heart attack is happening and decide the best treatment.\n In some cases, a heart attack requires cardiopulmonary resuscitation (CPR) or an electrical shock (defibrillation) to the heart to get\n the heart pumping again. You can make these procedure if you are trained to do it and if you have a certification."],
-          "context": [""]
+          "responses": ["If you notice the symptoms of a heart attack in yourself or someone else, call the emergence number (112 in Italy) immediately. \nThe sooner you get to an emergency room, the sooner you can get treatment to reduce the amount of damage to the heart muscle.\n At the hospital, health care professionals can run tests to find out if a heart attack is happening and decide the best treatment.\n In some cases, a heart attack requires cardiopulmonary resuscitation (CPR) or an electrical shock (defibrillation) to the heart to get\n the heart pumping again. You can make these procedure if you are trained to do it and if you have a certification."]
+
         },
          {
           "tag": "covid-19_symptoms",
-          "patterns": [""],
-          "responses": [""],
-          "context": [""]
+          "patterns": ["I lost my sense of smell and taste.", "I have fever", "I have sore Throat", "I no longer feel smells and tastes"],
+          "responses": [""]
+
+        },
+        {
+          "tag": "covid-19",
+          "patterns": ["What is covid-19", "what is coronavirus ?", "What are the symptoms of coronavirus?"],
+          "responses": ["People with COVID-19 have had a wide range of symptoms reported - ranging from mild symptoms to severe illness. \n Symptoms may appear 2-14 days after exposure to the virus. Anyone can have mild to severe symptoms. \n\n People with these symptoms may have COVID-19: \n\n - Fever \n\n - Cough \n\n - Shortness of breath or difficulty breathing \n\n - New loss of taste or smell \n\n - Sore throat\n\n - Nausea or vomiting \n\n - Congestion or runny nose \n\n - Diarrhea"]
+
         },
         {
           "tag": "covid-19_suggestions",
           "patterns": [""],
-          "responses": [""],
-          "context": [""]
+          "responses": [""]
+
         },
         {
           "tag": "acne",
           "patterns": ["What is acne?", "causes acne", "what causes acne?", "What are the causes of the acne?"],
-          "responses": ["Acne is a skin condition caused by dead skin cells sticking together and clogging up pores. Bacteria can play a role, too. A big trigger for the onset of acne is puberty."],
-          "context": [""]
+          "responses": ["Acne is a skin condition caused by dead skin cells sticking together and clogging up pores. Bacteria can play a role, too. A big trigger for the onset of acne is puberty."]
+
         },
         {
           "tag": "acne-treatments",
           "patterns": ["Acne remedies", "acne treatments","What are the treatments for acne?", "In which way i can cure the acne",
                       "In which way i should cure the acne", "In which way i may cure the acne"],
-          "responses": ["The are some drugs suitable for acne. Contact your Doctor to give more information."],
-          "context": [""]
+          "responses": ["The are some drugs suitable for acne. Contact your Doctor to give more information."]
+
         },
          {
           "tag": "acne-symptoms",
           "patterns": ["I have Crusting of skin bumps.", "I have a lot of cysts.", "I have Pustules on my body", "I have cysts on my body",
             "I have cysts in my face", "I have pustules on my faces", "I have redness around the skin eruptions, on may face",
             "my face is covered by pustules", "my face is covered by cysts", "In my body there many cysts and pustules"],
-          "responses": ["You may have the acne. I suggest a dermatologist visit."],
-          "context": [""]
+          "responses": ["You may have the acne. I suggest a dermatologist visit."]
+
         },
         {
           "tag": "no_answer",
           "patterns": [""],
-          "responses": ["I cannot understand your question.", "Try to reformulate your question.", "Provide more information."],
-          "context": [""]
+          "responses": ["I cannot understand your question.", "Try to reformulate your question.", "Provide more information."]
+
         }
 ]
 }
