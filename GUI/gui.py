@@ -45,8 +45,6 @@ class ChatBotGUI(Tk):
         self.iconphoto(False, self.bot_photo)
         self.click_btn = PhotoImage(file='GUI/icons/send_btn.png')
 
-        self.loading_gif = PhotoImage(file="GUI/icons/loading.gif")
-
         self.bg_logo = Label(self, bg=HEADER_BACKGROUD_COLOR, fg="white")
         self.head_title_label = Label(self, bg=HEADER_BACKGROUD_COLOR, fg="white",
                                       text="Medical-Bot Assistant", font="Helvetica "
@@ -163,12 +161,17 @@ class ChatBotGUI(Tk):
             if self._ANSWER_TO_BOT is False:
 
                 self.insert_bot_question(res[1])
+
                 self.check_need_bot_question(res=res, question="Do you want more information about the covid-19 "
                                                                "symptoms ?", tag="flue_symptoms")
+
+                self.check_need_bot_question(res=res, question="Do you want more information about the covid-19 "
+                                                               "symptoms ?", tag="covid-19_suggestions")
             else:
                 if message.lower() == "yes":
                     bot_answ = "Something Wrong..."
-                    if self.tag_for_answer_to_bot == "flue_symptoms":
+                    if self.tag_for_answer_to_bot == "flue_symptoms" or self.tag_for_answer_to_bot == "covid" \
+                                                                                                      "-19_suggestions":
                         bot_answ = self.get_responses_from_tag("covid-19")
 
                     self.insert_bot_question(bot_answ[0])

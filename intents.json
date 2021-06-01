@@ -97,8 +97,8 @@
         },
          {
           "tag": "covid-19_symptoms",
-          "patterns": ["I lost my sense of smell and taste.", "I have fever", "I have sore Throat", "I no longer feel smells and tastes"],
-          "responses": [""]
+          "patterns": ["I lost my sense of smell and taste what could I have?.", "I have fever and difficulty breathing what could I have?.","I no longer feel smells and tastes", "I have some problem in breathing", "I cannot breath very well and I have fever"],
+          "responses": ["You could have Covid-19. I suggest you to contact your doctor."]
 
         },
         {
@@ -109,8 +109,8 @@
         },
         {
           "tag": "covid-19_suggestions",
-          "patterns": [""],
-          "responses": [""]
+          "patterns": ["What I can do in case of Covid-19?", "What I should do in case of Covid-19?", "What is the procedure in case?", "What do in case of Covid-19", "Best practice in case of Covid-19"],
+          "responses": ["If you are sick with COVID-19 or think you might have COVID-19, you should monitor the symptoms, if you have and if you present the Covid-19 symptoms contact your doctor."]
 
         },
         {
