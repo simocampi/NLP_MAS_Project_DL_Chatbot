@@ -157,6 +157,8 @@ class ChatBotGUI(Tk):
 
         covid_checker_tag = ["flue_symptoms", "covid-19_suggestions", "covid-19_symptoms"]
 
+        asthma_checker_tag = ["asthma-symptoms", "asthma-suggestion"]
+
         if message != '':
             self.chat_log_window.config(foreground="#442265", font=(FONT_CHAT, FONT_SIZE_CHAT))
 
@@ -172,6 +174,9 @@ class ChatBotGUI(Tk):
                 for tag_covid in covid_checker_tag:
                     self.check_need_bot_question(res=res, question="Do you want more information about the covid-19 "
                                                                    "symptoms ?", tag=tag_covid)
+                for tag_asthma in asthma_checker_tag:
+                    self.check_need_bot_question(res=res, question="Do you want more information about the asthma "
+                                                                   "symptoms ?", tag=tag_asthma)
 
                 self.check_need_bot_question(res=res, question="Do you want more information about the appendicitis "
                                                                "symptoms ?", tag="appendicitis_symptoms")
@@ -185,8 +190,11 @@ class ChatBotGUI(Tk):
                 if message.lower() == "yes":
                     bot_answ = "Something missing..."
                     # flu and covid-19
-                    if self.tag_for_answer_to_bot in ["flue_symptoms", "covid-19_suggestions", "covid-19_symptoms"]:
+                    if self.tag_for_answer_to_bot in covid_checker_tag:
                         bot_answ = self.get_responses_from_tag("covid-19")
+
+                    elif self.tag_for_answer_to_bot in asthma_checker_tag:
+                        bot_answ = self.get_responses_from_tag("asthma-attack")
 
                     elif self.tag_for_answer_to_bot == "appendicitis_symptoms":
                         bot_answ = self.get_responses_from_tag("appendicitis")

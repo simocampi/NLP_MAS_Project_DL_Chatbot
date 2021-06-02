@@ -401,6 +401,51 @@
       ]
     },
     {
+      "tag": "asthma-attack",
+      "patterns": [
+        "What is asthma attack?",
+        "What is the asthma attack?",
+        "what are the asthma attack symptoms?",
+        "Can I recognize the asthma attack?",
+        "in what ways does asthma attack manifest itself?"
+      ],
+      "responses": [
+        "the Asthma attack can happen suddenly, or gradually over a few days.\n\nSigns of a severe asthma attack include:\n\n- wheezing, coughing and chest tightness becoming severe and constant\n\n-being too breathless to eat, speak or sleep\n\n-breathing faster\n\n-a fast heartbeat\n\n-drowsiness, confusion, exhaustion or dizziness\n\n-blue lips or fingers\n\n-fainting"
+      ]
+    },
+    {
+      "tag": "asthma-symptoms",
+      "patterns": [
+        "I notice wheezing in my breath",
+        "I have wheezing in my breath",
+        "I am breathless when I eat",
+        "I'm out of breath when I eat",
+        "My breath is very fast",
+        "I have a fast breath",
+        "I have a fast heartbeat",
+        "My heartbeat is very fast"
+      ],
+      "responses": [
+        "You may affect from asthma, check the common symptoms and then contact your doctor, you may need to an inhaler."
+      ]
+    },
+     {
+      "tag": "asthma-suggestion",
+      "patterns": [
+        "What should i do in case of asthma ?",
+        "What I can do in case of asthma",
+        "What is the best procedure in case of asthma",
+        "If I have the asthma what can i do?",
+        "If I have the asthma what should i do?",
+        "what do you suggest me to do in case of asthma?",
+        "What are your suggestions in case of asthma",
+        "I need to a your tip for my asthma"
+      ],
+      "responses": [
+        "You should contact your doctor, you may need to an inhaler. Check the symptoms of asthma."
+      ]
+    },
+    {
       "tag": "no_answer",
       "patterns": [
         ""

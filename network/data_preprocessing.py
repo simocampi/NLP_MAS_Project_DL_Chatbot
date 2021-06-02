@@ -62,7 +62,6 @@ def load_and_preprocess_data(intents):
     classes = []
     labels = []
     responses = []
-
     for intent in intents['intents']:
         for pattern in intent['patterns']:
             # use tokenization to extract words from a given pattern
@@ -125,7 +124,3 @@ def get_train_and_test(json_intents_filename):
     print("Y_train: ", y_train.shape)
 
     return x_train, y_train
-
-
-
-
