@@ -164,21 +164,30 @@ class ChatBotGUI(Tk):
 
                 self.insert_bot_question(res[1])
 
-                for tag in covid_checker_tag:
+                for tag_covid in covid_checker_tag:
                     self.check_need_bot_question(res=res, question="Do you want more information about the covid-19 "
-                                                                   "symptoms ?", tag=tag)
+                                                                   "symptoms ?", tag=tag_covid)
 
+                self.check_need_bot_question(res=res, question="Do you want more information about the appendicitis "
+                                                               "symptoms ?", tag="appendicitis symptoms")
             else:
+
                 if message.lower() == "yes":
-                    bot_answ = "Something Wrong..."
+                    bot_answ = "Something missing..."
                     # flu and covid-19
                     if self.tag_for_answer_to_bot in ["flue_symptoms", "covid-19_suggestions"]:
                         bot_answ = self.get_responses_from_tag("covid-19")
 
-                    self.insert_bot_question(bot_answ[0])
+                    if self.tag_for_answer_to_bot == "appendicitis symptoms":
+                        bot_answ = self.get_responses_from_tag("appendicitis")
+
+                        self.insert_bot_question(bot_answ[0])
 
                 elif message.lower() == "no":
                     self.insert_bot_question("OK, as you want.")
+
+                else:
+                    self.insert_bot_question(random.choice(["I did not understand your choice."]))
 
                 self._ANSWER_TO_BOT = False
 

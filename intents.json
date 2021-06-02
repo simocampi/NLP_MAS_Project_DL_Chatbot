@@ -150,7 +150,14 @@
         },
         {
 
-          "tag": "anxiety-55",
+          "tag": "appendicitis symptoms",
+          "patterns": ["if i press my right side it hurts a lot", "I feel sick and my right side it hurts a lot", "I lost appetite and my right side it hurts a lot"],
+          "responses": ["With these symptoms you may have appendicitis."]
+
+        },
+        {
+
+          "tag": "",
           "patterns": [""],
           "responses": [""]
 
