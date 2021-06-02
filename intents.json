@@ -100,7 +100,7 @@
         },
          {
           "tag": "covid-19_symptoms",
-          "patterns": ["I lost my sense of smell and taste what could I have?.", "I have fever and difficulty breathing what could I have?.","I no longer feel smells and tastes", "I have some problem in breathing", "I cannot breath very well and I have fever"],
+          "patterns": ["I lost my sense of smell and taste what could I have?.", "I have fever and difficulty breathing what could I have?.","I no longer feel smells and tastes", "I have some problem in breathing", "I cannot breath very well and I have fever", "I have temperature and I lost smell", "I have temperature and I lost taste"],
           "responses": ["You could have Covid-19. I suggest you to contact your doctor."]
 
         },
@@ -112,7 +112,7 @@
         },
         {
           "tag": "covid-19_suggestions",
-          "patterns": ["What I can do in case of Covid-19?", "What I should do in case of Covid-19?", "What is the procedure in case of Covid-19?", "What do in case of Covid-19", "Best practice in case of Covid-19"],
+          "patterns": ["I have covid-19","I may have covid-19", "I have coronavirus","I may have coronavirus", "What I can do in case of Covid-19?", "What I should do in case of Covid-19?", "What is the procedure in case of Covid-19?", "What do in case of Covid-19", "Best practice in case of Covid-19"],
           "responses": ["If you are sick with COVID-19 or think you might have COVID-19, you should monitor the symptoms, if you have and if you present the Covid-19 symptoms contact your doctor."]
 
         },
@@ -136,6 +136,11 @@
             "my face is covered by pustules", "my face is covered by cysts", "In my body there many cysts and pustules"],
           "responses": ["You may have the acne. I suggest a dermatologist visit."]
 
+        },
+        {
+          "tag": "no_answer",
+          "patterns": [""],
+          "responses": ["I cannot understand your question.", "Try to reformulate your question.", "Provide more information."]
         },
         {
           "tag": "no_answer",

@@ -84,7 +84,7 @@ class ChatBotGUI(Tk):
 
         self.chat_log_window_config()
         self.intents, self.dnn_chatbot = load_data_model(r"intents.json")
-        self.default_entry_box(default_message=" Write your health problem here being as specific as possible...")
+        self.default_entry_box(default_message=" Write your question here being as specific as possible...")
         self.default_chat_log()
 
     def chat_log_window_config(self):
@@ -103,7 +103,7 @@ class ChatBotGUI(Tk):
         self.chat_log_window.config(state=DISABLED)
 
     def default_entry_box(self, default_message="Type here a message..."):
-        self.entry_box.config(fg='grey', font=(FONT_CHAT, FONT_SIZE_CHAT-1))
+        self.entry_box.config(fg='grey', font=(FONT_CHAT, FONT_SIZE_CHAT))
         self.entry_box.insert(END, default_message)
         self.entry_box.bind("<FocusIn>", self.entry_box_focus_in)
         self.entry_box.bind("<FocusOut>", lambda event: self.entry_box_focus_out(event, default_message))
@@ -150,6 +150,8 @@ class ChatBotGUI(Tk):
         message = self.entry_box.get()
         self.entry_box.delete("0", END)
 
+        covid_checker_tag = ["flue_symptoms", "covid-19_suggestions"]
+
         if message != '':
             self.chat_log_window.config(foreground="#442265", font=(FONT_CHAT, FONT_SIZE_CHAT))
 
@@ -162,11 +164,10 @@ class ChatBotGUI(Tk):
 
                 self.insert_bot_question(res[1])
 
-                self.check_need_bot_question(res=res, question="Do you want more information about the covid-19 "
-                                                               "symptoms ?", tag="flue_symptoms")
+                for tag in covid_checker_tag:
+                    self.check_need_bot_question(res=res, question="Do you want more information about the covid-19 "
+                                                                   "symptoms ?", tag=tag)
 
-                self.check_need_bot_question(res=res, question="Do you want more information about the covid-19 "
-                                                               "symptoms ?", tag="covid-19_suggestions")
             else:
                 if message.lower() == "yes":
                     bot_answ = "Something Wrong..."
