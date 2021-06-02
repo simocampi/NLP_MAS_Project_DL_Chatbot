@@ -37,8 +37,9 @@
          {
           "tag":"common_cold_symptoms",
           "patterns": ["I have a blocked nose", "I have a blocked nose, what could I have?",
-                      "I have a raised temperature", "I sneeze all the time", "I am feeling a bit run down",
-                      "I am feeling under the weather", "I have a sore throat", "I have a sore throat, what could I have?"],
+                      "I have a raised temperature and blocked nose", "I have a bit of fever and i sneeze continually",
+                      "I sneeze all the time", "I am feeling a bit run down",
+                      "I am feeling under the weather and I have blocked nose", "I have a sore throat and I sneeze what could I have?"],
           "responses": ["With these symptoms you may have a common cold."]
 
         },
@@ -61,7 +62,9 @@
 
          {
           "tag": "flue_symptoms",
-          "patterns": ["I have a little fever.", "I have got a fever.", "I'm running a fever", "I'm running a temperature",
+          "patterns": ["I have fever and body aches", "I feel all my body broke and i think to have a bit of temperature",
+                        "I have Temperature and sore throat", "I have temperature", "I have got a fever.", "I'm running a fever",
+                        "I'm running a temperature",
                         "I have a high fever, what could I have", "I've got temperature", "i've got high temperature"],
           "responses": ["You could have a flu. You could have also the covid-19 ( or coronavirus), \n if you you have not already been vaccinated for it or have already had the disease."]
 
@@ -76,9 +79,9 @@
         {
           "tag": "hit_limb",
           "patterns": ["I hit my knee and it is swollen", "My leg is swollen after hit with the floor",
-            "I fell to the ground and I have the ankle swollen", "my ankle hurts a lot after falling", "my knee hurts after falling",
-            "my elbow hurts after falling", "I have elbow swollen after falling"],
-          "responses": ["I suggest you put ice on the swollen body part, if it doesn't pass I suggest you go to the hospital for a x-ray."]
+            "I fell to the ground and I have the ankle swollen", "my ankle hurts a lot after falling", "my knee hurts after falling", "My ankle is swollen after falling",
+            "my elbow hurts after falling", "I have elbow swollen after falling", "I sprained my ankle, it is swollen", "What can i do with a sprained ankle?"],
+          "responses": ["I suggest you put ice on the swollen (and/or in part that hurts) body part, if it doesn't pass I suggest you go to the hospital for a x-ray."]
 
         },
         {
@@ -109,7 +112,7 @@
         },
         {
           "tag": "covid-19_suggestions",
-          "patterns": ["What I can do in case of Covid-19?", "What I should do in case of Covid-19?", "What is the procedure in case?", "What do in case of Covid-19", "Best practice in case of Covid-19"],
+          "patterns": ["What I can do in case of Covid-19?", "What I should do in case of Covid-19?", "What is the procedure in case of Covid-19?", "What do in case of Covid-19", "Best practice in case of Covid-19"],
           "responses": ["If you are sick with COVID-19 or think you might have COVID-19, you should monitor the symptoms, if you have and if you present the Covid-19 symptoms contact your doctor."]
 
         },

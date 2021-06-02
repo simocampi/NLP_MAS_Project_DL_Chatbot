@@ -84,7 +84,7 @@ class ChatBotGUI(Tk):
 
         self.chat_log_window_config()
         self.intents, self.dnn_chatbot = load_data_model(r"intents.json")
-        self.default_entry_box(default_message=" Type here your question...")
+        self.default_entry_box(default_message=" Write your health problem here being as specific as possible...")
         self.default_chat_log()
 
     def chat_log_window_config(self):
@@ -103,7 +103,7 @@ class ChatBotGUI(Tk):
         self.chat_log_window.config(state=DISABLED)
 
     def default_entry_box(self, default_message="Type here a message..."):
-        self.entry_box.config(fg='grey', font=(FONT_CHAT, FONT_SIZE_CHAT))
+        self.entry_box.config(fg='grey', font=(FONT_CHAT, FONT_SIZE_CHAT-1))
         self.entry_box.insert(END, default_message)
         self.entry_box.bind("<FocusIn>", self.entry_box_focus_in)
         self.entry_box.bind("<FocusOut>", lambda event: self.entry_box_focus_out(event, default_message))
@@ -170,8 +170,8 @@ class ChatBotGUI(Tk):
             else:
                 if message.lower() == "yes":
                     bot_answ = "Something Wrong..."
-                    if self.tag_for_answer_to_bot == "flue_symptoms" or self.tag_for_answer_to_bot == "covid" \
-                                                                                                      "-19_suggestions":
+                    # flu and covid-19
+                    if self.tag_for_answer_to_bot in ["flue_symptoms", "covid-19_suggestions"]:
                         bot_answ = self.get_responses_from_tag("covid-19")
 
                     self.insert_bot_question(bot_answ[0])
