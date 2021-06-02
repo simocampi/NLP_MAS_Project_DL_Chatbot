@@ -41,7 +41,6 @@ class ChatBotGUI(Tk):
         # add iconphoto
 
         self.bot_photo = PhotoImage(file="GUI/icons/bot.png")
-        self.logo = PhotoImage(file="GUI/icons/logo.png")
         self.iconphoto(False, self.bot_photo)
         self.click_btn = PhotoImage(file='GUI/icons/send_btn.png')
 
