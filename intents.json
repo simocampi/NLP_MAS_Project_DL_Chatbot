@@ -118,7 +118,7 @@
         },
         {
           "tag": "acne",
-          "patterns": ["What is acne?", "causes acne", "what causes acne?", "What are the causes of the acne?"],
+          "patterns": ["What is acne?", "causes of acne", "what causes acne?", "What are the causes of the acne?"],
           "responses": ["Acne is a skin condition caused by dead skin cells sticking together and clogging up pores. Bacteria can play a role, too. A big trigger for the onset of acne is puberty."]
 
         },
@@ -145,7 +145,7 @@
         },
         {
           "tag": "appendicitis",
-          "patterns": ["What is appendicitis?", "what are the appendicitis symptoms?","Can I recognize the appendicitis?", "in what ways does appendicitis manifest itself?"],
+          "patterns": ["What is appendicitis?","What is the appendicitis?", "what are the appendicitis symptoms?","Can I recognize the appendicitis?", "in what ways does appendicitis manifest itself?"],
           "responses": ["Appendicitis typically starts with a pain in the middle of your tummy (abdomen) that may come and go. Within hours, the pain travels to your lower right-hand side, where the appendix is usually located, and becomes constant and severe.\nPressing on this area, coughing or walking may make the pain worse.\nIf you have appendicitis, you may also have other symptoms, including:\n\n- feeling sick (nausea)\n\n- being sick\n\n- loss of appetite\n\n- constipation or diarrhoea\n\n- a high temperature and a flushed face"]
         },
         {

@@ -7,7 +7,6 @@ from GUI.gui_settings import *
 import random
 import os
 
-
 BACKGROUND_COLOR = "white"
 
 
@@ -64,12 +63,20 @@ class ChatBotGUI(Tk):
         self.entry_box = self.create_entry_box()
 
         # enter key to send message
-        self.bind("<Return>", self.chat_callback)
+        self.entry_box.bind("<Return>", self.chat_callback)
 
         ttk.Separator(self, orient=HORIZONTAL).place(x=11, y=481, relwidth=0.9)
 
         # Place all components on the main window
 
+        self.place_all_components()
+
+        self.chat_log_window_config()
+        self.intents, self.dnn_chatbot = load_data_model(r"intents.json")
+        self.default_entry_box(default_message=" Write your question here being as specific as possible...")
+        self.default_chat_log()
+
+    def place_all_components(self):
         self.bg_logo.place(x=0, y=0, height=HEAD_LABEL_HEIGHT, width=WINDOW_WIDTH)
         self.head_title_label.place(x=70, y=(HEAD_LABEL_HEIGHT // 2.5), height=15, width=250)
         self.bot_logo_label.place(x=(WINDOW_WIDTH - 100), y=2, height=60, width=40)
@@ -80,11 +87,6 @@ class ChatBotGUI(Tk):
                              width=WINDOW_WIDTH - 45)
         self.send_button.place(x=420, y=520, height=25, width=25)
 
-        self.chat_log_window_config()
-        self.intents, self.dnn_chatbot = load_data_model(r"intents.json")
-        self.default_entry_box(default_message=" Write your question here being as specific as possible...")
-        self.default_chat_log()
-
     def chat_log_window_config(self):
         self.chat_log_window.tag_config('you', foreground="red", background="#ECF6FF")
         self.chat_log_window.tag_config('you2', foreground="black", background="#ECF6FF")
@@ -93,7 +95,7 @@ class ChatBotGUI(Tk):
 
     def default_chat_log(self):
         self.chat_log_window.config(foreground="#442265", font=(FONT_CHAT, FONT_SIZE_CHAT))
-        self.chat_log_window.config(state=NORMAL,exportselection=0 )
+        self.chat_log_window.config(state=NORMAL, exportselection=0)
         self.chat_log_window.insert(END, "\nBOT:  ", "bot")
         self.chat_log_window.insert(INSERT,
                                     "Welcome! I'm your personal virtual medical assistant. How can I help you?" + '\n\n',
@@ -103,6 +105,7 @@ class ChatBotGUI(Tk):
     def default_entry_box(self, default_message="Type here a message..."):
         self.entry_box.config(fg='grey', font=(FONT_CHAT, FONT_SIZE_CHAT))
         self.entry_box.insert(END, default_message)
+
         self.entry_box.bind("<FocusIn>", self.entry_box_focus_in)
         self.entry_box.bind("<FocusOut>", lambda event: self.entry_box_focus_out(event, default_message))
 
@@ -132,7 +135,7 @@ class ChatBotGUI(Tk):
     # sometimes is the bot to ask question
     def insert_bot_question(self, question):
         self.chat_log_window.insert(END, "\nBOT:  ", "bot")
-        self.chat_log_window.insert(INSERT, question + '\n\n', "bot2")
+        self.chat_log_window.insert(END, question + '\n\n', "bot2")
 
     def chat_callback(self, event):
         self.chat()
@@ -155,7 +158,7 @@ class ChatBotGUI(Tk):
 
             self.chat_log_window.config(state=NORMAL, exportselection=0, wrap=WORD)
             self.chat_log_window.insert(END, "\nYOU:  ", "you")
-            self.chat_log_window.insert(INSERT, message + '\n\n', "you2")
+            self.chat_log_window.insert(END,  message + '\n\n', "you2")
 
             res = self.get_bot_answer(message)
             if self._ANSWER_TO_BOT is False:
@@ -194,8 +197,7 @@ class ChatBotGUI(Tk):
             self.chat_log_window.yview(END)
 
     def create_chat_log_window(self):
-        return Text(self, bd=0, bg="white", height="8",
-                    width="50", font=FONT_CHAT)
+        return Text(self, bd=0, bg="white", font=FONT_CHAT)
 
     def create_send_button(self):
         return Button(master=self, image=self.click_btn, height=30, width=30, command=self.chat, relief="flat",
