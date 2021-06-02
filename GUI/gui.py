@@ -133,16 +133,20 @@ class ChatBotGUI(Tk):
         return None
 
     # sometimes is the bot to ask question
-    def insert_bot_question(self, question):
+    def insert_bot_message(self, question):
         self.chat_log_window.insert(END, "\nBOT:  ", "bot")
         self.chat_log_window.insert(END, question + '\n\n', "bot2")
+
+    def insert_user_message(self, message):
+        self.chat_log_window.insert(END, "\nYOU:  ", "you")
+        self.chat_log_window.insert(END, message + '\n\n', "you2")
 
     def chat_callback(self, event):
         self.chat()
 
     def check_need_bot_question(self, res, question, tag):
         if res[0] == tag:
-            self.insert_bot_question(question)
+            self.insert_bot_message(question)
             self._ANSWER_TO_BOT = True
             self.tag_for_answer_to_bot = tag
 
@@ -157,13 +161,13 @@ class ChatBotGUI(Tk):
             self.chat_log_window.config(foreground="#442265", font=(FONT_CHAT, FONT_SIZE_CHAT))
 
             self.chat_log_window.config(state=NORMAL, exportselection=0, wrap=WORD)
-            self.chat_log_window.insert(END, "\nYOU:  ", "you")
-            self.chat_log_window.insert(END,  message + '\n\n', "you2")
+
+            self.insert_user_message(message)
 
             res = self.get_bot_answer(message)
             if self._ANSWER_TO_BOT is False:
 
-                self.insert_bot_question(res[1])
+                self.insert_bot_message(res[1])
 
                 for tag_covid in covid_checker_tag:
                     self.check_need_bot_question(res=res, question="Do you want more information about the covid-19 "
@@ -182,13 +186,13 @@ class ChatBotGUI(Tk):
                     elif self.tag_for_answer_to_bot == "appendicitis symptoms":
                         bot_answ = self.get_responses_from_tag("appendicitis")
 
-                    self.insert_bot_question(bot_answ[0])
+                    self.insert_bot_message(bot_answ[0])
 
                 elif message.lower() == "no":
-                    self.insert_bot_question("OK, as you want.")
+                    self.insert_bot_message("OK, as you want.")
 
                 else:
-                    self.insert_bot_question(random.choice(["I did not understand your choice."]))
+                    self.insert_bot_message(random.choice(["I did not understand your choice."]))
 
                 self._ANSWER_TO_BOT = False
 

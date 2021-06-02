@@ -94,25 +94,38 @@
         {
           "tag": "heart-attack-suggestion",
           "patterns": ["What I have to do in case of heart attack.", "What I can do in case of heart attack.",
-                        "What I should do in case of heart attack.", "if I notice symptoms of a heart attack", "how should i behave heart attack"],
+                        "What should I do in case of heart attack.", "if I notice symptoms of a heart attack what can i do?",
+                        "how should i behave when heart attack occurs", "what do you suggest me to do in case of heart attack?",
+                      "What can I in do in case of heart attack ?"],
           "responses": ["If you notice the symptoms of a heart attack in yourself or someone else, call the emergence number (112 in Italy) immediately. \nThe sooner you get to an emergency room, the sooner you can get treatment to reduce the amount of damage to the heart muscle.\n At the hospital, health care professionals can run tests to find out if a heart attack is happening and decide the best treatment.\n In some cases, a heart attack requires cardiopulmonary resuscitation (CPR) or an electrical shock (defibrillation) to the heart to get\n the heart pumping again. You can make these procedure if you are trained to do it and if you have a certification."]
 
         },
          {
           "tag": "covid-19_symptoms",
-          "patterns": ["I lost my sense of smell and taste what could I have?.", "I have fever and difficulty breathing what could I have?.","I no longer feel smells and tastes", "I have some problem in breathing", "I cannot breath very well and I have fever", "I have temperature and I lost smell", "I have temperature and I lost taste"],
+          "patterns": ["I lost my sense of smell and taste what could I have?.",
+                      "I have fever and difficulty breathing what could I have?.","I no longer feel smells and tastes",
+                      "I have some problem in breathing", "I cannot breath very well and I have fever",
+                      "I have temperature and I lost smell", "I have temperature and I lost taste"],
+
           "responses": ["You could have Covid-19. I suggest you to check the covid-19 symptoms and contact your doctor."]
 
         },
         {
           "tag": "covid-19",
-          "patterns": ["What is covid-19", "what is coronavirus ?", "What are the symptoms of coronavirus?", "Covid-19 symptoms", "coronavirus symptoms", "in what ways does covid-19 manifest itself?", "in what ways does coronavirus manifest itself?"],
+          "patterns": ["What is covid-19", "what is coronavirus ?",
+                        "What are the symptoms of coronavirus?", "Covid-19 symptoms",
+                        "coronavirus symptoms", "in what ways does covid-19 manifest itself?",
+                        "in what ways does coronavirus manifest itself?"],
           "responses": ["People with COVID-19 have had a wide range of symptoms reported - ranging from mild symptoms to severe illness. Symptoms may appear 2-14 days after exposure to the virus. Anyone can have mild to severe symptoms. \n\n People with these symptoms may have COVID-19: \n\n - Fever \n\n - Cough \n\n - Shortness of breath or difficulty breathing \n\n - New loss of taste or smell \n\n - Sore throat\n\n - Nausea or vomiting \n\n - Congestion or runny nose \n\n - Diarrhea"]
 
         },
         {
           "tag": "covid-19_suggestions",
-          "patterns": ["I have covid-19","I may have covid-19", "I have coronavirus","I may have coronavirus", "What I can do in case of Covid-19?", "What I should do in case of Covid-19?", "What is the procedure in case of Covid-19?", "What do in case of Covid-19", "Best practice in case of Covid-19"],
+          "patterns": ["I have covid-19","I may have covid-19", "I have coronavirus","I may have coronavirus",
+                        "What can I do in case of Covid-19?", "What  should I do in case of Covid-19?",
+                        "What is the procedure in case of Covid-19?", "What do in case of Covid-19",
+                        "Best practice in case of Covid-19", "What are your suggestions in case of covid-19",
+                        "What are your suggestions in case of coronavirus"],
           "responses": ["If you are sick with COVID-19 or think you might have COVID-19, you should monitor the symptoms, if you have and if you present the Covid-19 symptoms contact your doctor."]
 
         },
@@ -125,7 +138,8 @@
         {
           "tag": "acne-treatments",
           "patterns": ["Acne remedies", "acne treatments","What are the treatments for acne?", "In which way i can cure the acne",
-                      "In which way i should cure the acne", "In which way i may cure the acne"],
+                      "In which way i should cure the acne", "In which way i may cure the acne", "what do you suggest me to do in case of acne?",
+                      "What can I in do in case of acne?", "What can I in do if I have acne?", "What should I in do in case of acne?"],
           "responses": ["The are some drugs suitable for acne. Contact your Doctor to give more information."]
 
         },
@@ -140,12 +154,14 @@
          {
           "tag": "backache",
           "patterns": ["I have backache, what can I do?", "I have backache, what should I do?",
-                       "I have backache, what could I do?", "I have back pain", "I have a lot back pain"],
+                       "I have backache, what could I do?", "I have back pain", "I have a lot back pain", "What are your suggestions in case of backache",
+                        "What do you suggest in case of backache"],
           "responses": ["I you have back pain, try not to strain it, and rest for a few days. If the pain doesn't improve contact your doctor."]
         },
         {
           "tag": "appendicitis",
-          "patterns": ["What is appendicitis?","What is the appendicitis?", "what are the appendicitis symptoms?","Can I recognize the appendicitis?", "in what ways does appendicitis manifest itself?"],
+          "patterns": ["What is appendicitis?","What is the appendicitis?", "what are the appendicitis symptoms?",
+                        "Can I recognize the appendicitis?", "in what ways does appendicitis manifest itself?"],
           "responses": ["Appendicitis typically starts with a pain in the middle of your tummy (abdomen) that may come and go. Within hours, the pain travels to your lower right-hand side, where the appendix is usually located, and becomes constant and severe.\nPressing on this area, coughing or walking may make the pain worse.\nIf you have appendicitis, you may also have other symptoms, including:\n\n- feeling sick (nausea)\n\n- being sick\n\n- loss of appetite\n\n- constipation or diarrhoea\n\n- a high temperature and a flushed face"]
         },
         {
@@ -159,10 +175,13 @@
 
         },
         {
+          "tag": "appendicitis suggestion",
+          "patterns": ["What should i do in case of appendicitis ?", "What I can do in case of appendicitis",
+                      "What is the best procedure in case of appendicitis", "If I have the appendicitis what can i do?",
+                      "If I have the appendicitis what should i do?", "what do you suggest me to do in case of appendicitis?",
+                      "What are your suggestions in case of appendicitis"],
 
-          "tag": "",
-          "patterns": [""],
-          "responses": [""]
+          "responses": ["I suggest you to call immediately your doctor, he will provide you more information. Otherwise you could go directly to the hospital."]
 
         },
         {
