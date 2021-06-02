@@ -174,7 +174,12 @@ class ChatBotGUI(Tk):
                                                                    "symptoms ?", tag=tag_covid)
 
                 self.check_need_bot_question(res=res, question="Do you want more information about the appendicitis "
-                                                               "symptoms ?", tag="appendicitis symptoms")
+                                                               "symptoms ?", tag="appendicitis_symptoms")
+
+                self.check_need_bot_question(res=res, question="Do you want more information about the blood pressure "
+                                                               "values?",
+                                             tag="blood_pressure")
+
             else:
 
                 if message.lower() == "yes":
@@ -183,8 +188,11 @@ class ChatBotGUI(Tk):
                     if self.tag_for_answer_to_bot in ["flue_symptoms", "covid-19_suggestions", "covid-19_symptoms"]:
                         bot_answ = self.get_responses_from_tag("covid-19")
 
-                    elif self.tag_for_answer_to_bot == "appendicitis symptoms":
+                    elif self.tag_for_answer_to_bot == "appendicitis_symptoms":
                         bot_answ = self.get_responses_from_tag("appendicitis")
+
+                    elif self.tag_for_answer_to_bot == "blood_pressure":
+                        bot_answ = self.get_responses_from_tag("blood_pressure_reference")
 
                     self.insert_bot_message(bot_answ[0])
 
