@@ -6,7 +6,7 @@ import tkinter.ttk as ttk
 from GUI.gui_settings import *
 import random
 import os
-from time import sleep
+
 
 BACKGROUND_COLOR = "white"
 
