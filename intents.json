@@ -101,12 +101,12 @@
          {
           "tag": "covid-19_symptoms",
           "patterns": ["I lost my sense of smell and taste what could I have?.", "I have fever and difficulty breathing what could I have?.","I no longer feel smells and tastes", "I have some problem in breathing", "I cannot breath very well and I have fever", "I have temperature and I lost smell", "I have temperature and I lost taste"],
-          "responses": ["You could have Covid-19. I suggest you to contact your doctor."]
+          "responses": ["You could have Covid-19. I suggest you to check the covid-19 symptoms and contact your doctor."]
 
         },
         {
           "tag": "covid-19",
-          "patterns": ["What is covid-19", "what is coronavirus ?", "What are the symptoms of coronavirus?"],
+          "patterns": ["What is covid-19", "what is coronavirus ?", "What are the symptoms of coronavirus?", "Covid-19 symptoms", "coronavirus symptoms", "in what ways does covid-19 manifest itself?", "in what ways does coronavirus manifest itself?"],
           "responses": ["People with COVID-19 have had a wide range of symptoms reported - ranging from mild symptoms to severe illness. Symptoms may appear 2-14 days after exposure to the virus. Anyone can have mild to severe symptoms. \n\n People with these symptoms may have COVID-19: \n\n - Fever \n\n - Cough \n\n - Shortness of breath or difficulty breathing \n\n - New loss of taste or smell \n\n - Sore throat\n\n - Nausea or vomiting \n\n - Congestion or runny nose \n\n - Diarrhea"]
 
         },
@@ -131,9 +131,9 @@
         },
          {
           "tag": "acne-symptoms",
-          "patterns": ["I have Crusting of skin bumps.", "I have a lot of cysts.", "I have Pustules on my body", "I have cysts on my body",
-            "I have cysts in my face", "I have pustules on my faces", "I have redness around the skin eruptions, on may face",
-            "my face is covered by pustules", "my face is covered by cysts", "In my body there many cysts and pustules"],
+          "patterns": ["I have Crusting of skin bumps, what could I have.", "I have a lot of cysts, what can it be.", "I have Pustules on my body, what could it be", "I have cysts on my body",
+            "I have cysts in my face", "I have pustules on my faces, what could I have", "I have redness around the skin eruptions, on may face, what could I have",
+            "my face is covered by pustules, what can it be", "my face is covered by cysts", "In my body there many cysts and pustules"],
           "responses": ["You may have the acne. I suggest a dermatologist visit."]
 
         },
@@ -151,8 +151,11 @@
         {
 
           "tag": "appendicitis symptoms",
-          "patterns": ["if i press my right side it hurts a lot", "I feel sick and my right side it hurts a lot", "I lost appetite and my right side it hurts a lot"],
-          "responses": ["With these symptoms you may have appendicitis."]
+          "patterns": ["if i press my right side it hurts a lot, what it  can be", "I feel sick and my right side it hurts a lot, what it could be?",
+                        "I lost appetite and my right side it hurts a lot, what  it  could be", "I have plenty of pain to my right side, what could I have ",
+                        "I have pain to my right side, what could I have", "pressing my right side i feel pain, what can I have"],
+
+          "responses": ["With these symptoms you may have appendicitis. Check the symptoms of appendicitis."]
 
         },
         {

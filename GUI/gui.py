@@ -54,7 +54,6 @@ class ChatBotGUI(Tk):
 
         # Create Chat window
         self.chat_log_window = self.create_chat_log_window()
-        self.chat_log_window.config(state=DISABLED)
 
         # Bind scrollbar to Chat window
         self.scrollbar = Scrollbar(self, command=self.chat_log_window.yview)
@@ -95,12 +94,12 @@ class ChatBotGUI(Tk):
 
     def default_chat_log(self):
         self.chat_log_window.config(foreground="#442265", font=(FONT_CHAT, FONT_SIZE_CHAT))
-        self.chat_log_window.config(state=NORMAL)
+        self.chat_log_window.config(state=NORMAL,exportselection=0 )
         self.chat_log_window.insert(END, "\nBOT:  ", "bot")
         self.chat_log_window.insert(INSERT,
                                     "Welcome! I'm your personal virtual medical assistant. How can I help you?" + '\n\n',
                                     "bot2")
-        self.chat_log_window.config(state=DISABLED)
+        self.chat_log_window.config(state=DISABLED, exportselection=0, wrap=WORD)
 
     def default_entry_box(self, default_message="Type here a message..."):
         self.entry_box.config(fg='grey', font=(FONT_CHAT, FONT_SIZE_CHAT))
@@ -150,12 +149,12 @@ class ChatBotGUI(Tk):
         message = self.entry_box.get()
         self.entry_box.delete("0", END)
 
-        covid_checker_tag = ["flue_symptoms", "covid-19_suggestions"]
+        covid_checker_tag = ["flue_symptoms", "covid-19_suggestions", "covid-19_symptoms"]
 
         if message != '':
             self.chat_log_window.config(foreground="#442265", font=(FONT_CHAT, FONT_SIZE_CHAT))
 
-            self.chat_log_window.config(state=NORMAL)
+            self.chat_log_window.config(state=NORMAL, exportselection=0, wrap=WORD)
             self.chat_log_window.insert(END, "\nYOU:  ", "you")
             self.chat_log_window.insert(INSERT, message + '\n\n', "you2")
 
@@ -175,13 +174,13 @@ class ChatBotGUI(Tk):
                 if message.lower() == "yes":
                     bot_answ = "Something missing..."
                     # flu and covid-19
-                    if self.tag_for_answer_to_bot in ["flue_symptoms", "covid-19_suggestions"]:
+                    if self.tag_for_answer_to_bot in ["flue_symptoms", "covid-19_suggestions", "covid-19_symptoms"]:
                         bot_answ = self.get_responses_from_tag("covid-19")
 
-                    if self.tag_for_answer_to_bot == "appendicitis symptoms":
+                    elif self.tag_for_answer_to_bot == "appendicitis symptoms":
                         bot_answ = self.get_responses_from_tag("appendicitis")
 
-                        self.insert_bot_question(bot_answ[0])
+                    self.insert_bot_question(bot_answ[0])
 
                 elif message.lower() == "no":
                     self.insert_bot_question("OK, as you want.")
@@ -191,7 +190,8 @@ class ChatBotGUI(Tk):
 
                 self._ANSWER_TO_BOT = False
 
-            self.chat_log_window.config(state=DISABLED)
+            self.chat_log_window.config(state=DISABLED, exportselection=0)
+            self.chat_log_window.update_idletasks()
             self.chat_log_window.yview(END)
 
     def create_chat_log_window(self):
