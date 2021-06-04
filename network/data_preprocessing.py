@@ -29,7 +29,7 @@ def lemmatize_and_preprocess_words(words_list):
     """Filter punctuations marks, make in lower case and then lemmatize"""
 
     lemmatized_words = lemmatize_words(words_list)
-    print(lemmatized_words)
+
     """remove duplicates"""
     return sorted(list(set(lemmatized_words)))
 
@@ -76,6 +76,8 @@ def load_and_preprocess_data(intents):
             classes.append(intent['tag'])
     classes = sorted(list(classes))
     words_list_lemmatized = lemmatize_and_preprocess_words(words_list)
+
+    print("\nLEMMATIZED WORDS: ", words_list_lemmatized, "\n")
 
     if not os.path.isdir("model"):
         os.mkdir("model")
