@@ -56,15 +56,56 @@
       ]
     },
     {
+      "tag": "how_are_you",
+      "patterns": [
+        "How are you?",
+        "You all right?",
+        "Are you well?",
+        "what's up?",
+        "What's going on?",
+        "How have you been?",
+        "How is everything",
+        "What's new"
+      ],
+      "responses": [
+        "I'm fine, thanks.", "Fine","I'm good", "I'm great!","Doing really well!", "Couldn't be better!"
+      ],
+      "context": [
+        ""
+      ]
+    },
+    {
+      "tag": "bot_name",
+      "patterns": [
+        "Who are you?",
+        "What your name?",
+        "tell me your name",
+        "how you are called",
+        "what did you say your name was",
+        "please state your name",
+        "name again",
+        "what was your name again",
+        "what are you calling yourself"
+
+      ],
+      "responses": [
+        "I'm Medibot, your personal medical-bot assistant. If you don't know me, ask me what I can do."
+      ],
+      "context": [
+        ""
+      ]
+    },
+    {
       "tag": "help",
       "patterns": [
         "How you could help me?",
         "What can you do?",
         "What help you provide?",
-        "How you can be helpful?"
+        "How you can be helpful?",
+        "In which way you can help me?"
       ],
       "responses": [
-        "If you have some health problem I can give yuo some advise to help you get better."
+        "If you have some health problem I can give yuo some advise to help you get better. You can tell me all your symptoms, and I'll try to understand what could be your problem. The more precise you are in describing the symptoms, the more precise I will be in understanding what your health problem is.\n Moreover, you can ask me also information about som kind of health problem or disease."
       ],
       "context": [
         ""
