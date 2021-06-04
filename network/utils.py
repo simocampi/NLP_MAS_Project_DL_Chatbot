@@ -52,14 +52,19 @@ pos_tag_map = {
     'WRB': None,  # wh-adverb (how, where)
     ',': None,
     '?': None,
+    '!': None,
     '.': None,
     '...': None,
     '"': None,
-    '[':None,
-    '{':None,
-    ']':None,
+    '[': None,
+    '{': None,
+    ']': None,
     '}': None,
     '(': None,
-    ')': None
+    ')': None,
+    "''": None,
+    "'": None,
+    "^": None,
+    "|": None,
 
 }

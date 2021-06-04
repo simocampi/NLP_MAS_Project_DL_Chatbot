@@ -20,15 +20,15 @@
     {
       "tag": "goodbye",
       "patterns": [
-        "Bye",
-        "See you later",
-        "Goodbye",
-        "Nice chatting to you, bye",
-        "Till next time"
+        "Bye!",
+        "See you later.",
+        "Goodbye.",
+        "Nice chatting to you, bye.",
+        "Till next time."
       ],
       "responses": [
         "See you!",
-        "Have a nice day",
+        "Have a nice day! :-)",
         "Bye! Come back again soon."
       ],
       "context": [
@@ -38,8 +38,8 @@
     {
       "tag": "thanks",
       "patterns": [
-        "Thanks",
-        "Thank you",
+        "Thanks!",
+        "Thank you :)",
         "That's helpful",
         "Awesome, thanks",
         "Thanks for helping me"
@@ -74,10 +74,24 @@
       "tag": "headache",
       "patterns": [
         "I have a headache",
+        "I have headache",
         "I have a very bad headache, what could I take?",
         "I have a headache, what can I do?",
+        "I have a headache, what should I do?",
         "I had a headache",
-        "I had a severe headache"
+        "I had a severe headache",
+        "What can I in do in case of headache?",
+        "What can I in do if I have headache?",
+        "What should I in do in case of headache?",
+        "Best practice in case of headache",
+        "What are your suggestions in case of headache",
+        "I need your tip for my headache",
+        "headache treatment",
+        "headache remedies",
+        "What are the treatments for a headache?",
+        "What are the remedies for a headache?",
+        "What are the remedies if I have a headache?",
+        "I have a headache, what could I take"
       ],
       "responses": [
         "You should drink water, take some magnesium and try to sleep. If doesn't go away you can take a medicine like aspirin, paracetamol or ibuprofen. "
@@ -87,12 +101,24 @@
       "tag": "common_cold",
       "patterns": [
         "I have a cold, what could I take",
-        "I have a cold, what could I do?",
-        "What should i do if i have a cold?",
-        "I have cold, what are the remedies?",
-        "I have cold, what is the treatment",
+        "I have a common cold",
+        "I have a cold",
+        "I have a bad cold, what could I take?",
+        "I have a cold, what can I do?",
+        "I have a cold, what should I do?",
+        "I had a severe cold",
+        "What can I in do in case of cold?",
+        "What can I in do if I have cold?",
+        "What should I in do in case of cold?",
+        "Best practice in case of cold",
+        "What are your suggestions in case of cold",
+        "I need your tip for my cold",
         "cold treatment",
-        "cold remedies"
+        "cold remedies",
+        "I think to have a common cold, what can I do?",
+        "What are the treatment for a cold?",
+        "What are the remedies for a cold?",
+        "What are the remedies if I have a cold?"
       ],
       "responses": [
         "You should rest and sleep, keep warm, drink plenty of water and if you have a fever, take some paracetamol."
