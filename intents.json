@@ -105,7 +105,7 @@
         "In which way you can help me?"
       ],
       "responses": [
-        "If you have some health problem I can give yuo some advise to help you get better. You can tell me all your symptoms, and I'll try to understand what could be your problem. The more precise you are in describing the symptoms, the more precise I will be in understanding what your health problem is.\n Moreover, you can ask me also information about som kind of health problem or disease."
+        "If you have health problems I can give yuo some advise to help you get better. You can tell me all your symptoms, and I'll try to understand what could be your problem. The more precise you are in describing the symptoms, the more precise I will be in understanding what your health problem is.\n Moreover, you can ask me also information about som kind of health problem or disease."
       ],
       "context": [
         ""
@@ -178,7 +178,22 @@
         "I have a sore throat and I sneeze what could I have?"
       ],
       "responses": [
-        "With these symptoms you may have a common cold."
+        "With these symptoms you may have a common cold. If you want, you can check what are the common cold symptoms."
+      ]
+    },
+    {
+      "tag": "common_cold_information",
+      "patterns": [
+        "What is common cold ?",
+        "what is a cold ?",
+        "What are the symptoms of common cold?",
+        "common cold symptoms",
+        "cold symptoms",
+        "in what ways does common cold manifest itself?",
+        "in what ways does a cold manifest itself?"
+      ],
+      "responses": [
+        "The common cold is a viral infection of your nose and throat (upper respiratory tract). It's usually harmless, although it might not feel that way. Many types of viruses can cause a common cold.\nChildren younger than 6 are at greatest risk of colds, but healthy adults can also expect to have two or three colds annually.\n Symptoms of a common cold usually appear one to three days after exposure to a cold-causing virus. Signs and symptoms, which can vary from person to person, might include:\n\n- Runny or stuffy nose\n\n- Sore throat\n\n- Cough\n\n- Congestion\n\n- Slight body aches or a mild headache\n\n- Sneezing\n\n- Low-grade fever\n\n- Generally feeling unwell (malaise)"
       ]
     },
     {
@@ -474,10 +489,10 @@
         "What is the asthma attack?",
         "what are the asthma attack symptoms?",
         "Can I recognize the asthma attack?",
-        "in what ways does asthma attack manifest itself?"
+        "in which ways does asthma attack manifest itself?"
       ],
       "responses": [
-        "the Asthma attack can happen suddenly, or gradually over a few days.\n\nSigns of a severe asthma attack include:\n\n- wheezing, coughing and chest tightness becoming severe and constant\n\n-being too breathless to eat, speak or sleep\n\n-breathing faster\n\n-a fast heartbeat\n\n-drowsiness, confusion, exhaustion or dizziness\n\n-blue lips or fingers\n\n-fainting"
+        "An Asthma attack can happen suddenly, or gradually over a few days.\n\nSigns of a severe asthma attack include:\n\n- wheezing, coughing and chest tightness becoming severe and constant\n\n-being too breathless to eat, speak or sleep\n\n-breathing faster\n\n-a fast heartbeat\n\n-drowsiness, confusion, exhaustion or dizziness\n\n-blue lips or fingers\n\n-fainting"
       ]
     },
     {

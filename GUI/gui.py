@@ -29,7 +29,7 @@ class ChatBotGUI(Tk):
 
     def __init__(self, *args, **kwargs):
         Tk.__init__(self, *args, **kwargs)
-        self.title("Medical-bot Assistant")
+        self.title("Medibot: Medical-bot Assistant")
         self.geometry(str(WINDOW_WIDTH) + "x" + str(WINDOW_HEIGHT))
         self.resizable(width=FALSE, height=FALSE)
         self.configure(bg=BACKGROUND_COLOR)
@@ -134,7 +134,7 @@ class ChatBotGUI(Tk):
 
     # sometimes is the bot to ask question
     def insert_bot_message(self, question):
-        self.chat_log_window.insert(END, "\nBOT:  ", "bot")
+        self.chat_log_window.insert(END, "\nMEDIBOT:  ", "bot")
         self.chat_log_window.insert(END, question + '\n\n', "bot2")
 
     def insert_user_message(self, message):
@@ -185,24 +185,33 @@ class ChatBotGUI(Tk):
                                                                "values?",
                                              tag="blood_pressure")
 
+                self.check_need_bot_question(res=res,
+                                             question="Do you want more information about the common cold symptoms?",
+                                             tag="common_cold_symptoms")
+
             else:
 
                 if message.lower() == "yes":
-                    bot_answ = "Something missing..."
+
                     # flu and covid-19
                     if self.tag_for_answer_to_bot in covid_checker_tag:
-                        bot_answ = self.get_responses_from_tag("covid-19")
+                        bot_answ = self.get_responses_from_tag("covid-19")[0]
 
                     elif self.tag_for_answer_to_bot in asthma_checker_tag:
-                        bot_answ = self.get_responses_from_tag("asthma-attack")
+                        bot_answ = self.get_responses_from_tag("asthma-attack")[0]
 
                     elif self.tag_for_answer_to_bot == "appendicitis_symptoms":
-                        bot_answ = self.get_responses_from_tag("appendicitis")
+                        bot_answ = self.get_responses_from_tag("appendicitis")[0]
 
                     elif self.tag_for_answer_to_bot == "blood_pressure":
-                        bot_answ = self.get_responses_from_tag("blood_pressure_reference")
+                        bot_answ = self.get_responses_from_tag("blood_pressure_reference")[0]
 
-                    self.insert_bot_message(bot_answ[0])
+                    elif self.tag_for_answer_to_bot == "common_cold_symptoms":
+                        bot_answ = self.get_responses_from_tag("common_cold_information")[0]
+                    else:
+                        bot_answ = "Something missing..."
+
+                    self.insert_bot_message(bot_answ)
 
                 elif message.lower() == "no":
                     self.insert_bot_message("OK, as you want.")
