@@ -23,7 +23,7 @@ lemmatizer = WordNetLemmatizer()
 def lemmatize_words(words_sequence):
     ignore_words = ['!', '?']
     return [lemmatizer.lemmatize(w.lower(), pos_tag_map[p]) if pos_tag_map[p] is not None and w.isalpha()
-            else lemmatizer.lemmatize(w.lower()) for w, p in pos_tag(words_sequence) if w not in ignore_words]
+            else lemmatizer.lemmatize(w.lower()) for w, p in pos_tag(words_sequence) if w.isalpha()]
 
 
 def lemmatize_and_preprocess_words(words_list):
@@ -55,7 +55,6 @@ def pattern_to_BoW(words_list_lemmatized, pattern, tokenized=True):
     return BoW
 
 
-# TODO: VALUATE TOKENIZATION KERAS AND ONEHOT ENCODING
 def load_and_preprocess_data(intents):
     patterns_lemmatized = []
     words_list = []

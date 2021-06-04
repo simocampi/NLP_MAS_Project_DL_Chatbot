@@ -419,8 +419,11 @@
         "I notice wheezing in my breath",
         "I have wheezing in my breath",
         "I am breathless when I eat",
+        "I am breathless when I sleep",
+        "I am breathless when I speak",
         "I'm out of breath when I eat",
         "My breath is very fast",
+        "I breathe very quickly",
         "I have a fast breath",
         "I have a fast heartbeat",
         "My heartbeat is very fast"
@@ -429,7 +432,7 @@
         "You may affect from asthma, check the common symptoms and then contact your doctor, you may need to an inhaler."
       ]
     },
-     {
+    {
       "tag": "asthma-suggestion",
       "patterns": [
         "What should i do in case of asthma ?",
@@ -439,7 +442,10 @@
         "If I have the asthma what should i do?",
         "what do you suggest me to do in case of asthma?",
         "What are your suggestions in case of asthma",
-        "I need to a your tip for my asthma"
+        "I need to a your tip for my asthma",
+        "I have asthma",
+        "I have asthma what could I do?",
+        "I have asthma what should I do?"
       ],
       "responses": [
         "You should contact your doctor, you may need to an inhaler. Check the symptoms of asthma."
