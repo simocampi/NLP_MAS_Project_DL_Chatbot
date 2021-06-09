@@ -68,7 +68,6 @@ class ChatBotGUI(Tk):
         ttk.Separator(self, orient=HORIZONTAL).place(x=11, y=481, relwidth=0.9)
 
         # Place all components on the main window
-
         self.place_all_components()
 
         self.chat_log_window_config()
