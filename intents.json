@@ -230,7 +230,7 @@
       ]
     },
     {
-      "tag": "flue_symptoms",
+      "tag": "flu_symptoms",
       "patterns": [
         "I have fever and body aches",
         "I feel all my body broke and i think to have a bit of temperature",

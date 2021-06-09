@@ -154,7 +154,7 @@ class ChatBotGUI(Tk):
         message = self.entry_box.get()
         self.entry_box.delete("0", END)
 
-        covid_checker_tag = ["flue_symptoms", "covid-19_suggestions", "covid-19_symptoms"]
+        covid_checker_tag = ["flu_symptoms", "covid-19_suggestions", "covid-19_symptoms"]
 
         asthma_checker_tag = ["asthma-symptoms", "asthma-suggestion"]
 
