@@ -95,7 +95,7 @@ class ChatBotGUI(Tk):
     def default_chat_log(self):
         self.chat_log_window.config(foreground="#442265", font=(FONT_CHAT, FONT_SIZE_CHAT))
         self.chat_log_window.config(state=NORMAL, exportselection=0)
-        self.chat_log_window.insert(END, "\nBOT:  ", "bot")
+        self.chat_log_window.insert(END, "\nMEDIBOT:  ", "bot")
         self.chat_log_window.insert(INSERT,
                                     "Welcome! I'm your personal virtual medical assistant. How can I help you?" + '\n\n',
                                     "bot2")
