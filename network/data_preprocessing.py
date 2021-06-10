@@ -8,9 +8,7 @@ from sklearn.utils import shuffle
 import pickle
 from network.utils import pos_tag_map
 
-nltk.download('punkt')
-nltk.download('wordnet')
-nltk.download('averaged_perceptron_tagger')
+
 
 from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag, word_tokenize
