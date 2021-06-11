@@ -77,7 +77,7 @@ class ChatBotGUI(Tk):
 
     def place_all_components(self):
         self.bg_logo.place(x=0, y=0, height=HEAD_LABEL_HEIGHT, width=WINDOW_WIDTH)
-        self.head_title_label.place(x=70, y=(HEAD_LABEL_HEIGHT // 2.5), height=15, width=250)
+        self.head_title_label.place(x=70, y=(HEAD_LABEL_HEIGHT // 2.5), height=20, width=250)
         self.bot_logo_label.place(x=(WINDOW_WIDTH - 100), y=2, height=60, width=40)
         self.scrollbar.place(x=WINDOW_WIDTH - 21, y=HEAD_LABEL_HEIGHT, height=CHAT_LOG_WINDOW_HEIGHT)
         self.chat_log_window.place(x=1, y=63, height=CHAT_LOG_WINDOW_HEIGHT - 5, width=WINDOW_WIDTH - 22)
