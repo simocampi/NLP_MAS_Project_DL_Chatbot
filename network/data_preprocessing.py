@@ -8,8 +8,6 @@ from sklearn.utils import shuffle
 import pickle
 from network.utils import pos_tag_map
 
-
-
 from nltk.stem import WordNetLemmatizer
 from nltk import pos_tag, word_tokenize
 
