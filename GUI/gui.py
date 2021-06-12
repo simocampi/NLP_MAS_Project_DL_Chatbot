@@ -105,17 +105,20 @@ class ChatBotGUI(Tk):
         self.entry_box.config(fg='grey', font=(FONT_CHAT, FONT_SIZE_CHAT))
         self.entry_box.insert(END, default_message)
 
-        self.entry_box.bind("<FocusIn>", self.entry_box_focus_in)
+        self.entry_box.bind("<FocusIn>", lambda event: self.entry_box_focus_in(event, default_message))
         self.entry_box.bind("<FocusOut>", lambda event: self.entry_box_focus_out(event, default_message))
 
-    def entry_box_focus_in(self, event):
-        self.entry_box.delete(0, END)
-        self.entry_box.config(fg='black', font=(FONT_CHAT, FONT_SIZE_CHAT))
+    def entry_box_focus_in(self, event, default_message):
+        if self.entry_box.get() == default_message or self.entry_box.get() == "":
+            self.entry_box.delete(0, END)
+            self.entry_box.config(fg='black', font=(FONT_CHAT, FONT_SIZE_CHAT))
 
     def entry_box_focus_out(self, event, default_message):
-        self.entry_box.delete(0, END)
-        self.entry_box.config(fg='grey', font=(FONT_CHAT, FONT_SIZE_CHAT))
-        self.entry_box.insert(0, default_message)
+
+        if self.entry_box.get() == default_message or self.entry_box.get() == "":
+            self.entry_box.delete(0, END)
+            self.entry_box.config(fg='grey', font=(FONT_CHAT, FONT_SIZE_CHAT))
+            self.entry_box.insert(0, default_message)
 
     def get_bot_answer(self, user_question):
 
