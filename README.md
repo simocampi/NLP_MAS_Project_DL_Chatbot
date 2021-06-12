@@ -14,3 +14,5 @@ In the main folder is present the file requirements.txt, which contains the list
 Then the chatbot can be executed with:
 
 `python main.py`
+
+`sudo apt-get install python3-tk`
