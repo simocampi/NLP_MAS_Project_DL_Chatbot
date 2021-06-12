@@ -2,6 +2,7 @@ from tensorflow.keras.models import Sequential, load_model
 from tensorflow.keras.layers import Dense, Activation, Dropout, Embedding, GlobalAveragePooling1D
 from tensorflow.keras.optimizers import SGD
 from tensorflow.keras.callbacks import EarlyStopping
+from tensorflow.keras.utils import plot_model
 from network.data_preprocessing import pattern_to_BoW
 from network.utils import Bcolors
 import numpy as np
@@ -56,6 +57,8 @@ class ChatbotDNN:
             if not os.path.isdir("model"):
                 os.mkdir("model")
             self.model.save('model/model.h5', hist)
+            ''' Uncomment print_model ONLY if is installed pydot and graphviz '''
+            # plot_model(self.model, to_file="model/model.png")
             print(Bcolors.OKBLUE + "\nModel saved correctly.\n" + Bcolors.ENDC)
 
     def predict(self, new_pattern):
