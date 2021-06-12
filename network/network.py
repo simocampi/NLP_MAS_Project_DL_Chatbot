@@ -35,7 +35,7 @@ class ChatbotDNN:
 
             self.model.add(Dense(len(classes), activation="softmax"))
             # set the optimizer
-            sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+            sgd = SGD(learning_rate=0.01, decay=1e-6, momentum=0.9, nesterov=True)
             # compile the model
             self.model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
             self.model.summary()

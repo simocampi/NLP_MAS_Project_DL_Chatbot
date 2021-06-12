@@ -159,7 +159,12 @@
         "I think to have a common cold, what can I do?",
         "What are the treatment for a cold?",
         "What are the remedies for a cold?",
-        "What are the remedies if I have a cold?"
+        "What are the remedies if I have a cold?",
+        "Maybe I have cold",
+        "maybe my father got",
+        "maybe my father caught the flu",
+        "maybe I got a cold",
+        "maybe I caught a cold"
       ],
       "responses": [
         "You should rest and sleep, keep warm, drink plenty of water and if you have a fever, take some paracetamol."
@@ -209,7 +214,9 @@
         "What are your suggestions in case of high blood pressure",
         "What are your suggestions if my pressure is high",
         "I need to a your tip for my high pressure",
-        "I need to a your tip for high blood pressure"
+        "I need to a your tip for high blood pressure",
+        "Maybe I have the high pressure",
+        "Maybe my father has the blood pressure high?"
       ],
       "responses": [
         "You may be hypertensive, check the references for the normal values of high pressure and then, if your values are not normal contact your doctor."
@@ -259,7 +266,11 @@
         "What are your suggestions in case of flu",
         "I need to a your tip for my flu",
         "If i have flu what should I do?",
-        "If I have flue what could I do?"
+        "If I have flue what could I do?",
+        "Maybe I have the flu?",
+        "Maybe my son could have the flu?",
+        "Maybe my mother has the flu?",
+        "maybe I got the flu"
       ],
       "responses": [
         "You should rest and sleep, keep warm, drink plenty of water and if the fever increases a lot you could take paracetamol or ibuprofen."
@@ -310,7 +321,13 @@
         "if I notice symptoms of a heart attack what can i do?",
         "how should i behave when heart attack occurs",
         "what do you suggest me to do in case of heart attack?",
-        "What can I in do in case of heart attack ?"
+        "What can I in do in case of heart attack ?",
+        "Maybe my husband could have heart attack",
+        "Maybe my wife could have heart attack, what can i do",
+        "Maybe my mum could have heart attack, what may i do?",
+        "Maybe my dad could have heart attack, what could i do",
+        "Maybe my father could have heart attack"
+
       ],
       "responses": [
         "If you notice the symptoms of a heart attack in yourself or someone else, call the emergence number (112 in Italy) immediately. \nThe sooner you get to an emergency room, the sooner you can get treatment to reduce the amount of damage to the heart muscle.\n At the hospital, health care professionals can run tests to find out if a heart attack is happening and decide the best treatment.\n In some cases, a heart attack requires cardiopulmonary resuscitation (CPR) or an electrical shock (defibrillation) to the heart to get\n the heart pumping again. You can make these procedure if you are trained to do it and if you have a certification."
@@ -362,7 +379,9 @@
         "What are your suggestions in case of covid-19",
         "What are your suggestions in case of coronavirus",
         "I need to a your tip for covid-19",
-        "I need to a your tip for coronavirus"
+        "I need to a your tip for coronavirus",
+        "Maybe I could have covid-19",
+        "Maybe I could have coronavirus"
       ],
       "responses": [
         "If you are sick with COVID-19 or think you might have COVID-19, you should monitor the symptoms, if you have and if you present the Covid-19 symptoms contact your doctor."
@@ -398,7 +417,11 @@
         "What are your suggestions in case of acne",
         "I need your tip for acne",
         "I need your tip for acne in my face",
-        "I need to your tip for acne in my body"
+        "I need to your tip for acne in my body",
+        "Maybe I have the acne",
+        "Maybe my son could have the acne?",
+        "Maybe my mother has the acne?"
+
       ],
       "responses": [
         "The are some drugs suitable for acne. Contact your Doctor to give more information."
@@ -460,7 +483,10 @@
         "I lost appetite and my right side it hurts a lot, what  it  could be",
         "I have plenty of pain to my right side, what could I have ",
         "I have pain to my right side, what could I have",
-        "pressing my right side i feel pain, what can I have"
+        "pressing my right side i feel pain, what can I have",
+        "I have pain in the right side of the abdomen",
+        "if I press on the right side of the abdomen I feel a lot of pain",
+        "if I press on the right side of the abdomen I feel pain"
       ],
       "responses": [
         "With these symptoms you may have appendicitis. Check the symptoms of appendicitis."
@@ -476,7 +502,11 @@
         "If I have the appendicitis what should i do?",
         "what do you suggest me to do in case of appendicitis?",
         "What are your suggestions in case of appendicitis",
-        "I need to a your tip for my appendicitis"
+        "I need to a your tip for my appendicitis",
+        "Maybe I have the appendicitis",
+        "Maybe my son could have the appendicitis?",
+        "Maybe my father has the appendicitis?",
+        "Maybe I have the appendicitis?"
       ],
       "responses": [
         "I suggest you to call immediately your doctor, he will provide you more information. Otherwise you could go directly to the hospital."
@@ -527,7 +557,10 @@
         "I need to a your tip for my asthma",
         "I have asthma",
         "I have asthma what could I do?",
-        "I have asthma what should I do?"
+        "I have asthma what should I do?",
+        "Maybe my son could have the asthma?",
+        "Maybe my father has the asthma?",
+        "Maybe I have the asthma?"
       ],
       "responses": [
         "You should contact your doctor, you may need to an inhaler. Check the symptoms of asthma."
