@@ -1,6 +1,10 @@
 # MAS-NLP Project: Chatbot
 ## Medical Bot Assistant
 
+A chatbot, or conversional agent, aims to simulate a conversation with users, so that it is as natural as possible, in the same language of the user. This kind of software is very useful for example in the e-commerce, in the bank, or other areas in which there is a need to an automatic way to answer the users’ most frequently asked questions.
+In this project it is presented an implementation of a chatbot that aims to diagnose diseases of the users, taking in input their symptoms. Moreover, the chatbot is also able to provide symptoms and information regarding the symptoms of some disease. So, what has been implemented here, is a virtual medical assistant, who is able to help users with some types of disease and suggest to them when there is a problem serious enough to require the doctor’s intervention.
+This chatbot was implemented using also a deep neural network, which is able to make the chatbot more powerful, making it able to recognize users’ questions written in many forms and with many variations. 
+
 All the implementation details are included in the <a href=""> report </a>.
 
 This project was implemented using Python 3.8.5 and with the latest version of Windows 10 as operating system.
