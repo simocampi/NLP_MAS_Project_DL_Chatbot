@@ -1,4 +1,5 @@
-# NLP_MAS_Project_DL_Chatbot
+# MAS-NLP Project: Chatbot
+## Medical Bot Assistant
 
 All the implementation details are included in the <a href=""> report </a>.
 
