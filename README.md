@@ -26,6 +26,7 @@ The model should be already trained, and it is located in the model  folder. Oth
 If you want train again the model, it is enough deleting the model folder, and then execute the script main.py with the command showed above.
 The program works also with Ubuntu, even if the appearance could be slightly different from the one on Windows. The commands to execute the chatbot are the same. If there are some problems with the library Tkinter, you need to execute the following bash command:
 
+
 `sudo apt-get install python3-tk`
 
 After this operation should be possible to execute the chatbot on Ubuntu.
