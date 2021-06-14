@@ -1,5 +1,7 @@
 # NLP_MAS_Project_DL_Chatbot
 
+All the implementation details are included in the <a href=""> report </a>.
+
 This project was implemented using Python 3.8.5 and with the latest version of Windows 10 as operating system.
 Before executing the chatbot, you need to be sure to have all the Python package required that are:
 
@@ -15,4 +17,12 @@ Then the chatbot can be executed with:
 
 `python main.py`
 
+The model should be already trained, and it is located in the model  folder. Otherwise, the program automatically starts the training of the model.
+If you want train again the model, it is enough deleting the model folder, and then execute the script main.py with the command showed above.
+The program works also with Ubuntu, even if the appearance could be slightly different from the one on Windows. The commands to execute the chatbot are the same. If there are some problems with the library Tkinter, you need to execute the following bash command:
+
 `sudo apt-get install python3-tk`
+
+After this operation should be possible to execute the chatbot on Ubuntu.
+To run this project, at start you need to an internet connection, because will be downloaded the NLTK files needed.
+
